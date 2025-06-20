@@ -1,0 +1,15 @@
+<div class="login-container">
+  <div class="login-box">
+    <h1>ERP</h1>
+    <p>Bem vindo!</p>
+
+    <input class="login-input" [(ngModel)]="user" name="username" placeholder="Usuário" />
+    <input class="login-input" [(ngModel)]="password" name="password" placeholder="Senha" type="password" />
+  
+    <a href="#" class="forgot-password">Esqueci minha senha</a>
+
+    <button class="login-button" (click)="login()">Entrar</button>
+
+    <div *ngIf="error" class="error-message">{{ error }}</div>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+.erp-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.erp-container .menu {
+  background-color: #2f65b7;
+  color: white;
+  width: 220px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.erp-container .menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.erp-container .menu ul li {
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.erp-container .menu .user-info {
+  font-size: 12px;
+}
+
+.erp-container .menu .user-info a {
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.erp-container .content {
+  flex: 1;
+  padding: 20px;
+}
+
+.erp-container .content h1 {
+  color: #2f65b7;
+}
+
+.erp-container .content .top-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.erp-container .content .top-bar input {
+  flex: 1;
+  padding: 5px;
+}
+
+.erp-container .content .top-bar button {
+  background-color: #2f65b7;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.erp-container .content .funcionario-card {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.erp-container .content .funcionario-card .accordion-header {
+  background-color: #2f65b7;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+}
+
+.erp-container .content .funcionario-card .details {
+  background-color: #f0f4fc;
+  padding: 10px;
+}
+
+.erp-container .content .funcionario-card .details h3 {
+  margin-top: 0;
+}
+
+.erp-container .content .funcionario-card .details p {
+  margin: 4px 0;
+}
+
+.erp-container .content .pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.erp-container .content .pagination button {
+  background-color: #2f65b7;
+  color: white;
+  border: none;
+  margin: 0 10px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+@media (max-width: 768px) {
+  .erp-container {
+    flex-direction: column;
+  }
+
+  .erp-container .menu {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .erp-container .content {
+    padding: 10px;
+  }
+}

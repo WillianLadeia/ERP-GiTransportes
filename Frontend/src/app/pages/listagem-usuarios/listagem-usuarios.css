@@ -1,0 +1,136 @@
+.erp-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.erp-container .menu {
+  background-color: #2f65b7;
+  color: white;
+  width: 220px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.erp-container .menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.erp-container .menu ul li {
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.erp-container .menu .user-info {
+  font-size: 12px;
+}
+
+.erp-container .menu .user-info a {
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.erp-container .content {
+  flex: 1;
+  padding: 20px;
+}
+
+.erp-container .content h1 {
+  color: #2f65b7;
+}
+
+.erp-container .content .top-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.erp-container .content .top-bar input {
+  flex: 1;
+  padding: 5px;
+}
+
+.erp-container .content .top-bar button {
+  background-color: #2f65b7;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.erp-container .content .usuario-card {
+  background-color: #2f65b7;
+  color: white;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.erp-container .content .usuario-card .usuario-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.erp-container .content .usuario-card .usuario-detalhes {
+  padding: 10px;
+  background-color: #1e4a8d;
+}
+
+.erp-container .content .usuario-card .usuario-detalhes input {
+  margin-left: 10px;
+  padding: 3px;
+}
+
+.erp-container .content .usuario-card .usuario-detalhes label {
+  display: block;
+  margin: 5px 0;
+}
+
+.erp-container .content .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.erp-container .content .pagination span {
+  cursor: pointer;
+  padding: 5px 8px;
+  background-color: white;
+  color: #2f65b7;
+  border-radius: 3px;
+}
+
+.erp-container .content .pagination span.active {
+  background-color: #2f65b7;
+  color: white;
+}
+
+.erp-container .content .pagination button {
+  background-color: #2f65b7;
+  color: white;
+  border: none;
+  padding: 5px 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .erp-container {
+    flex-direction: column;
+  }
+
+  .erp-container .menu {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .erp-container .content {
+    padding: 10px;
+  }
+}

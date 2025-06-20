@@ -1,0 +1,39 @@
+<div class="erp-container">
+  <aside class="menu">
+    <ul>
+      <li>Administrativo</li>
+      <li>Financeiro</li>
+      <li>Fiscal</li>
+      <li>Sistema</li>
+    </ul>
+    <div class="user-info">
+      <span>Valéria da Silva Santos</span>
+      <a href="#">Sair</a>
+    </div>
+  </aside>
+
+  <main class="content">
+    <h1>Relatório Alunos Ativos</h1>
+
+    <button class="btn-gerar" (click)="gerarTabela()">Gerar Tabela</button>
+
+    <table *ngIf="alunos.length > 0">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Matrícula</th>
+          <th>Curso</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let aluno of alunos">
+          <td>{{ aluno.nome }}</td>
+          <td>{{ aluno.matricula }}</td>
+          <td>{{ aluno.curso }}</td>
+          <td>{{ aluno.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</div>

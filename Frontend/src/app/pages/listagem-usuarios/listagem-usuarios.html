@@ -1,0 +1,61 @@
+<div class="erp-container">
+  <aside class="menu">
+    <ul>
+      <li>Administrativo</li>
+      <li>Financeiro</li>
+      <li>Fiscal</li>
+      <li>Sistema</li>
+    </ul>
+    <div class="user-info">
+      <span>Valéria da Silva Santos</span>
+      <a href="#">Sair</a>
+    </div>
+  </aside>
+
+  <main class="content">
+    <h1>Usuários</h1>
+
+    <div class="top-bar">
+      <input type="text" placeholder="Buscar por nome..." [(ngModel)]="filtro" (input)="setPage(0)" />
+      <button (click)="toggleFiltros()">Filtros</button>
+      <button (click)="cadastrarUsuario()">Cadastrar Usuário</button>
+    </div>
+
+    <div *ngFor="let usuario of usuariosPaginados(); let i = index" class="usuario-card">
+      <div class="usuario-header" (click)="toggleExpand(i)">
+        <span>{{ usuario.nome }}</span>
+        <span>Status: {{ usuario.status }}</span>
+      </div>
+
+      <div class="usuario-detalhes" *ngIf="usuario.expandido">
+        <div>
+          <strong>Usuário:</strong>
+          <input [(ngModel)]="usuario.nome" />
+        </div>
+
+        <div>
+          <strong>Permissões:</strong>
+          <div *ngFor="let perm of permissoes">
+            <label>
+              <input type="checkbox" [(ngModel)]="usuario.permissoes[perm]" />
+              {{ perm }}
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <button (click)="previousPage()" [disabled]="paginaAtual === 0">&#9664;</button>
+      <span
+        *ngFor="let _ of paginas; let pageIndex = index"
+        (click)="setPage(pageIndex)"
+        [class.active]="pageIndex === paginaAtual"
+        style="cursor:pointer; padding: 4px 8px; user-select:none;"
+      >
+        {{ pageIndex + 1 }}
+      </span>
+      <button (click)="nextPage()" [disabled]="paginaAtual >= paginas.length - 1">&#9654;</button>
+    </div>
+  </main>
+</div>

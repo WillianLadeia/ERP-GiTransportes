@@ -1,0 +1,38 @@
+<div class="veiculos-container">
+  <div class="top-bar">
+    <button class="btn">Registrar Manutenção</button>
+    <button class="btn">Registrar Abastecimento</button>
+    <input type="text" placeholder="Buscar por nome..." (input)="buscar($event)" />
+    <button class="btn">Filtros</button>
+    <button class="btn">Cadastrar Veículo</button>
+  </div>
+
+  <div class="veiculo-box" *ngFor="let veiculo of veiculosFiltrados">
+    <div class="veiculo-header" (click)="toggleExpandir(veiculo)">
+      {{ veiculo.nome }}
+    </div>
+
+    <div class="veiculo-detalhes" *ngIf="veiculo.expandido">
+      <div class="col">
+        <p><strong>Placa:</strong> {{ veiculo.placa }}</p>
+        <p><strong>Modelo:</strong> {{ veiculo.modelo }}</p>
+        <p><strong>Capacidade:</strong> {{ veiculo.capacidade }}</p>
+      </div>
+      <div class="col">
+        <p><strong>Identificação:</strong> {{ veiculo.identificacao }}</p>
+        <p><strong>Ano de fabricação:</strong> {{ veiculo.anoFabricacao }}</p>
+        <p><strong>Data de aquisição:</strong> {{ veiculo.dataAquisicao }}</p>
+      </div>
+      <div class="acoes">
+        <button class="btn icone">🛠️</button>
+        <button class="btn icone">✏️</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="paginacao">
+    <button [disabled]="paginaAtual === 1">&lt;</button>
+    <span>{{ paginaAtual }}</span>
+    <button>&gt;</button>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+.veiculos-container {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.veiculos-container .top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.veiculos-container .top-bar input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.veiculos-container .top-bar .btn {
+  padding: 0.5rem 1rem;
+  background: #2a6bbf;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.veiculos-container .veiculo-box {
+  background: #2a6bbf;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.veiculos-container .veiculo-box .veiculo-header {
+  padding: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-bottom: 1px solid #fff;
+}
+
+.veiculos-container .veiculo-box .veiculo-detalhes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem;
+  background: #1d4f91;
+  border-radius: 0 0 10px 10px;
+}
+
+.veiculos-container .veiculo-box .veiculo-detalhes .col {
+  flex: 1 1 250px;
+  margin-right: 2rem;
+}
+
+.veiculos-container .veiculo-box .veiculo-detalhes .acoes {
+  display: flex;
+  gap: 0.5rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+.veiculos-container .veiculo-box .veiculo-detalhes .acoes .icone {
+  background: #3c8ce7;
+}
+
+.veiculos-container .paginacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.veiculos-container .paginacao button {
+  margin: 0 0.5rem;
+  padding: 0.25rem 0.75rem;
+}
+
+@media (max-width: 600px) {
+  .veiculos-container .veiculo-detalhes {
+    flex-direction: column;
+  }
+}

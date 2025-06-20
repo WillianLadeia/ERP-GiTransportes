@@ -1,0 +1,61 @@
+<div class="erp-container">
+  <aside class="menu">
+    <ul>
+      <li>Administrativo</li>
+      <li>Financeiro</li>
+      <li>Fiscal</li>
+      <li>Sistema</li>
+    </ul>
+    <div class="user-info">
+      <span>Valéria da Silva Santos</span>
+      <a href="#">Sair</a>
+    </div>
+  </aside>
+
+  <main class="content">
+    <h1>Livro-Caixa</h1>
+
+    <div class="top-bar">
+      <input type="text" placeholder="Buscar..." [(ngModel)]="filtro" />
+      <button (click)="toggleFiltros()">Filtros</button>
+      <button (click)="registrarRecebimento()">Registrar Recebimento</button>
+      <button (click)="registrarPagamento()">Registrar Pagamento</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Data</th>
+          <th>Valor</th>
+          <th>Categoria</th>
+          <th>Observação</th>
+          <th>ID</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of itensPaginados()">
+          <td>{{ item.tipo }}</td>
+          <td>{{ item.data }}</td>
+          <td>{{ item.valor }}</td>
+          <td>{{ item.categoria }}</td>
+          <td>{{ item.observacao }}</td>
+          <td>{{ item.id }}</td>
+          <td>
+            <button (click)="editar(item)">✏️</button>
+            <button (click)="reverter(item)">🔄</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <button (click)="previousPage()">&#9664;</button>
+      <span *ngFor="let p of paginas; let i = index" (click)="setPage(i)" [class.active]="i === paginaAtual">
+        {{ i + 1 }}
+      </span>
+      <button (click)="nextPage()">&#9654;</button>
+    </div>
+  </main>
+</div>

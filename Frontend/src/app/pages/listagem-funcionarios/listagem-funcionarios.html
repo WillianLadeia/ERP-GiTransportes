@@ -1,0 +1,60 @@
+<div class="erp-container">
+  <aside class="menu">
+    <ul>
+      <li>Administrativo</li>
+      <li>Financeiro</li>
+      <li>Fiscal</li>
+      <li>Sistema</li>
+    </ul>
+    <div class="user-info">
+      <span>Valéria da Silva Santos</span>
+      <a href="#">Sair</a>
+    </div>
+  </aside>
+
+  <main class="content">
+    <h1>Funcionários</h1>
+
+    <div class="top-bar">
+      <input type="text" placeholder="Buscar por nome..." [(ngModel)]="filtroNome" />
+      <button (click)="toggleFiltros()">Filtros</button>
+      <button (click)="cadastrarFuncionario()">Cadastrar Funcionário</button>
+    </div>
+
+    <div *ngIf="showFiltros" class="filtros-panel">
+      <p>Filtros adicionais aqui...</p>
+    </div>
+
+    <div *ngFor="let funcionario of funcionariosFiltrados()" class="funcionario-card">
+      <button class="accordion-header" (click)="toggleExpand(funcionario)">
+        {{ funcionario.cargo }}
+      </button>
+
+      <div *ngIf="funcionario.expanded" class="details">
+        <section class="dados-pessoais">
+          <h3>Dados Pessoais</h3>
+          <p><strong>Nome:</strong> {{ funcionario.nome }}</p>
+          <p><strong>RG:</strong> {{ funcionario.rg }}</p>
+          <p><strong>CPF:</strong> {{ funcionario.cpf }}</p>
+          <p><strong>Data de Nascimento:</strong> {{ funcionario.dataNascimento }}</p>
+          <p><strong>Sexo:</strong> {{ funcionario.sexo }}</p>
+          <p><strong>Estado Civil:</strong> {{ funcionario.estadoCivil }}</p>
+          <p><strong>Status:</strong> {{ funcionario.status }}</p>
+        </section>
+
+        <section class="contato">
+          <h3>Contato</h3>
+          <p><strong>Celular 1:</strong> {{ funcionario.celular1 }}</p>
+          <p><strong>Celular 2:</strong> {{ funcionario.celular2 }}</p>
+          <p><strong>Email:</strong> {{ funcionario.email }}</p>
+        </section>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <button (click)="previousPage()">&#9664;</button>
+      <span>{{ currentPage + 1 }}</span>
+      <button (click)="nextPage()">&#9654;</button>
+    </div>
+  </main>
+</div>

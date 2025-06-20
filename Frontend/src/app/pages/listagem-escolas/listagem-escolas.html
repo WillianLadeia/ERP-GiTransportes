@@ -1,0 +1,49 @@
+<div class="escolas-container">
+  <div class="top-bar">
+<!--
+    <input
+      type="text"
+      placeholder="Buscar por nome..."
+      (input)="buscar($event.target.value)"
+    />
+-->
+    <button class="btn">Filtros</button>
+    <button class="btn">Cadastrar Escola</button>
+  </div>
+
+  <div class="escola-box" *ngFor="let escola of escolasFiltradas">
+    <div class="escola-header" (click)="toggleExpandir(escola)">
+      {{ escola.nome }}
+    </div>
+
+    <div class="escola-detalhes" *ngIf="escola.expandido">
+      <div class="col">
+        <h4>Endereço</h4>
+        <p><strong>Rua:</strong> {{ escola.endereco.rua || '-' }}</p>
+        <p><strong>Nº:</strong> {{ escola.endereco.numero || '-' }}</p>
+        <p><strong>Bairro:</strong> {{ escola.endereco.bairro || '-' }}</p>
+        <p><strong>CEP:</strong> {{ escola.endereco.cep || '-' }}</p>
+        <p><strong>Cidade:</strong> {{ escola.endereco.cidade || '-' }}</p>
+        <p><strong>Complemento:</strong> {{ escola.endereco.complemento || '-' }}</p>
+      </div>
+      <div class="col">
+        <h4>Períodos</h4>
+        <ul>
+          <li *ngFor="let p of escola.periodos"><strong>{{ p }}</strong></li>
+        </ul>
+        <h4>Vans</h4>
+        <ul>
+          <li *ngFor="let v of escola.vans"><strong>{{ v }}</strong></li>
+        </ul>
+        <button class="btn editar">Editar ✎</button>
+      </div>
+    </div>
+  </div>
+<!-- 
+  <div class="paginacao">
+    <button [disabled]="paginaAtual === 1" (click)="paginaAtual--">&lt;</button>
+    <span>{{ paginaAtual }}</span>
+    <button (click)="paginaAtual++">&gt;</button>
+  </div>
+-->
+</div>

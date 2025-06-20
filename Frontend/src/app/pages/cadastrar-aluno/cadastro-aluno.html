@@ -1,0 +1,67 @@
+<div class="cadastro-container">
+  <div class="header">
+    <h1>{{ aluno.nome }}</h1>
+    <p><strong>Código:</strong> {{ aluno.codigo }}</p>
+  </div>
+
+  <section>
+    <h2>Informações do aluno</h2>
+    <div class="info-row">
+      <div><strong>Nome:</strong> {{ aluno.nome }}</div>
+      <div><strong>Data de nascimento:</strong> {{ aluno.nascimento }}</div>
+    </div>
+    <div class="info-row">
+      <div><strong>CPF:</strong> {{ aluno.cpf }}</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Informações do responsável</h2>
+    <div class="info-row">
+      <div><strong>Nome:</strong> {{ responsavel.nome }}</div>
+      <div><strong>Data de nascimento:</strong> {{ responsavel.dataNascimento }}</div>
+    </div>
+    <div class="info-row">
+      <div><strong>CPF:</strong> {{ responsavel.cpf }}</div>
+      <div><strong>Telefone:</strong> {{ responsavel.telefone }}</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Endereço</h2>
+    <div class="info-row">
+      <div><strong>Rua:</strong> {{ endereco.rua }}</div>
+      <div><strong>Nº Casa:</strong> {{ endereco.numero }}</div>
+    </div>
+    <div class="info-row">
+      <div><strong>Bairro:</strong> {{ endereco.bairro }}</div>
+      <div><strong>CEP:</strong> {{ endereco.cep }}</div>
+    </div>
+    <div class="info-row">
+      <div><strong>Cidade:</strong> {{ endereco.cidade }}</div>
+      <div><strong>Complemento:</strong> {{ endereco.complemento || '-' }}</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Escola</h2>
+    <div class="info-row">
+      <div><strong>Escola:</strong> {{ escola.nome }}</div>
+      <div><strong>Período:</strong> {{ escola.periodo }}</div>
+      <div><strong>Linha de van:</strong> {{ escola.linhaVan }}</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Financeiro</h2>
+    <div class="info-row">
+      <div><strong>Mensalidade:</strong> R$ {{ financeiro.mensalidade | number:'1.2-2' }}</div>
+      <div><strong>Dia do pagamento:</strong> {{ financeiro.diaPagamento }}</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Anotações</h2>
+    <textarea [(ngModel)]="anotacoes" placeholder="Digite aqui..."></textarea>
+  </section>
+</div>
