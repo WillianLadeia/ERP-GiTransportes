@@ -1,3 +1,8 @@
+::ng-deep * {
+    margin: 0;
+    padding: 0;
+}
+
 .escolas-container {
   padding: 2rem;
   font-family: Arial, sans-serif;
