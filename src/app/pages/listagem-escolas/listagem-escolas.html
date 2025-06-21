@@ -1,49 +1,133 @@
 <div class="escolas-container">
-  <div class="top-bar">
-<!--
-    <input
-      type="text"
-      placeholder="Buscar por nome..."
-      (input)="buscar($event.target.value)"
-    />
--->
-    <button class="btn">Filtros</button>
-    <button class="btn">Cadastrar Escola</button>
-  </div>
+  
+  <app-sidebar></app-sidebar> 
 
-  <div class="escola-box" *ngFor="let escola of escolasFiltradas">
-    <div class="escola-header" (click)="toggleExpandir(escola)">
-      {{ escola.nome }}
-    </div>
-
-    <div class="escola-detalhes" *ngIf="escola.expandido">
-      <div class="col">
-        <h4>Endereço</h4>
-        <p><strong>Rua:</strong> {{ escola.endereco.rua || '-' }}</p>
-        <p><strong>Nº:</strong> {{ escola.endereco.numero || '-' }}</p>
-        <p><strong>Bairro:</strong> {{ escola.endereco.bairro || '-' }}</p>
-        <p><strong>CEP:</strong> {{ escola.endereco.cep || '-' }}</p>
-        <p><strong>Cidade:</strong> {{ escola.endereco.cidade || '-' }}</p>
-        <p><strong>Complemento:</strong> {{ escola.endereco.complemento || '-' }}</p>
-      </div>
-      <div class="col">
-        <h4>Períodos</h4>
-        <ul>
-          <li *ngFor="let p of escola.periodos"><strong>{{ p }}</strong></li>
-        </ul>
-        <h4>Vans</h4>
-        <ul>
-          <li *ngFor="let v of escola.vans"><strong>{{ v }}</strong></li>
-        </ul>
-        <button class="btn editar">Editar ✎</button>
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <h1>Escolas</h1>
+      <div class="search-icon">
+        <i class="search"></i>
       </div>
     </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <div class="search-bar">
+        <input 
+          type="text" 
+          placeholder="Buscar por nome..."
+          [(ngModel)]="searchTerm"
+          (input)="onSearch()"
+        >
+      </div>
+      <div class="filter-button">
+        <button (click)="toggleFilters()">
+          <i class="filter-icon"></i>
+          Filtros
+          <i class="arrow-down"></i>
+        </button>
+      </div>
+      <div class="add-button">
+        <button (click)="cadastrarEscola()">Cadastrar Escola</button>
+      </div>
+    </div>
+
+    <!-- Schools List -->
+    <div class="schools-list">
+      @for (school of schools; track school.id; let i = $index) {
+        <div class="school-item">
+          <div class="school-header" [class.expanded]="school.expanded" (click)="toggleSchool(i)">
+            <h3>{{ school.nome }}</h3>
+            <i class="arrow" [class.expanded]="school.expanded"></i>
+          </div>
+          
+          @if (school.expanded) {
+            <div class="school-details">
+              <div class="details-grid">
+                <div class="details-left">
+                  <div class="detail-group">
+                    <h4>Endereço</h4>
+                    <div class="detail-row">
+                      <span class="label">Rua</span>
+                      <span class="value">{{ school.endereco.rua }}</span>
+                    </div>
+                    <div class="detail-row">
+                      <span class="label">Nº</span>
+                      <span class="value">{{ school.endereco.numero }}</span>
+                    </div>
+                    <div class="detail-row">
+                      <span class="label">Bairro</span>
+                      <span class="value">{{ school.endereco.bairro }}</span>
+                    </div>
+                    <div class="detail-row">
+                      <span class="label">CEP</span>
+                      <span class="value">{{ school.endereco.cep }}</span>
+                    </div>
+                    <div class="detail-row">
+                      <span class="label">Cidade</span>
+                      <span class="value">{{ school.endereco.cidade }}</span>
+                    </div>
+                    <div class="detail-row">
+                      <span class="label">Complemento</span>
+                      <span class="value">{{ school.endereco.complemento }}</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="details-right">
+                  <div class="detail-group">
+                    <h4>Períodos</h4>
+                    <ul class="periods-list">
+                      @for (periodo of school.periodos; track periodo) {
+                        <li>{{ periodo }}</li>
+                      }
+                    </ul>
+                  </div>
+                  
+                  <div class="detail-group">
+                    <h4>Vans</h4>
+                    <ul class="vans-list">
+                      @for (van of school.vans; track van) {
+                        <li>{{ van }}</li>
+                      }
+                    </ul>
+                  </div>
+                  
+                  <div class="edit-button">
+                    <button (click)="editarEscola(school)">
+                      <i class="edit-icon"></i>
+                      Editar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <button class="prev-btn" (click)="previousPage()" [disabled]="currentPage === 1">
+        <i class="arrow-left"></i>
+      </button>
+      <span class="page-numbers">
+        @for (page of getPageNumbers(); track page) {
+          <span 
+            class="page-number"
+            [class.active]="page === currentPage"
+            (click)="goToPage(page)"
+          >
+            {{ page }}
+          </span>
+        }
+      </span>
+      <button class="next-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">
+        <i class="arrow-right"></i>
+      </button>
+    </div>
   </div>
-<!-- 
-  <div class="paginacao">
-    <button [disabled]="paginaAtual === 1" (click)="paginaAtual--">&lt;</button>
-    <span>{{ paginaAtual }}</span>
-    <button (click)="paginaAtual++">&gt;</button>
-  </div>
--->
 </div>

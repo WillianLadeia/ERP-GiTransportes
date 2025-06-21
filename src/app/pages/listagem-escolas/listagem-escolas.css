@@ -1,86 +1,346 @@
 ::ng-deep * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .escolas-container {
-  padding: 2rem;
-  font-family: Arial, sans-serif;
-}
-
-.escolas-container .top-bar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.escolas-container .top-bar input {
+/* Main Content Styles */
+.main-content {
   flex: 1;
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.escolas-container .top-bar .btn {
-  padding: 0.5rem 1rem;
-  background: #2a6bbf;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.escolas-container .escola-box {
-  background: #2a6bbf;
-  color: white;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-}
-
-.escolas-container .escola-box .escola-header {
-  padding: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  border-bottom: 1px solid #fff;
-}
-
-.escolas-container .escola-box .escola-detalhes {
+  background: #fafafa;
   display: flex;
-  flex-wrap: wrap;
-  padding: 1rem;
-  background: #1d4f91;
-  border-radius: 0 0 10px 10px;
+  flex-direction: column;
 }
 
-.escolas-container .escola-box .escola-detalhes .col {
-  flex: 1 1 250px;
-  margin-right: 2rem;
+.header {
+  background: #fafafa;
+  padding: 1.25rem 1.875rem; /* 20px 30px */
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
 }
 
-.escolas-container .escola-box .escola-detalhes .col ul {
-  padding-left: 1rem;
+.header h1 {
+  font-size: 2.5rem; /* 36px */
+  color: #326db0;
+  margin: 0;
+  font-weight: bold;
 }
 
-.escolas-container .escola-box .btn.editar {
-  margin-top: 1rem;
-  background: #3c8ce7;
+.search-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
 }
 
-.escolas-container .paginacao {
+.search {
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"...') no-repeat center;
+  background-size: contain;
+}
+
+.controls {
+  padding: 1.25rem 1.875rem;
+  display: flex;
+  gap: 0.9375rem;
+  align-items: center;
+}
+
+.search-bar input {
+  padding: 0.75rem 2.5rem 0.75rem 0.9375rem;
+  border: 0.125rem solid #326db0;
+  border-radius: 0.9375rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background-color: #fafafa;
+}
+
+.search-bar input:focus {
+  border-color: #224976;
+}
+
+.filter-button button,
+.add-button button {
+  padding: 0.75rem 1.875rem;
+  border: none;
+  border-radius: 0.9375rem;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.filter-button button,
+.add-button button {
+  background: #326db0;
+  color: #fafafa;
+  font-weight: bold;
+}
+
+.filter-button button:hover,
+.add-button button:hover {
+  background: #224976;
+}
+
+.filter-icon,
+.arrow-down {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+/* Schools List Styles */
+.schools-list {
+  margin: 2%;
+  padding: 1.875rem;
+  border-radius: 1rem;
+  height: auto;
+  background-color: #326db0;
+
+}
+
+.school-item {
+  margin-bottom: 0.9375rem;
+  overflow: hidden;
+  transition: 0.3s ease;
+  border-radius: 1rem;
+}
+
+.school-item:hover {
+  background-color: #224976;
+}
+
+.school-header {
+  padding: 1.25rem 1.5625rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.school-header.expanded{
+  background-color: #224976;
+  border-bottom: none;
+}
+
+.school-header h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  color: #fafafa;
+  font-weight: 600;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 0.375rem solid transparent;
+  border-right: 0.375rem solid transparent;
+  border-top: 0.5rem solid #6c757d;
+  transition: transform 0.3s ease;
+}
+
+.arrow.expanded {
+  transform: rotate(180deg);
+}
+
+.school-details {
+  padding: 1.5625rem;
+  background: #224976;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 18.75rem; /* 300px */
+  gap: 1.875rem;
+}
+
+.detail-group {
+  margin-bottom: 1.5625rem;
+}
+
+.detail-group h4 {
+  margin: 0 0 0.9375rem 0;
+  font-size: 1rem;
+  color: #fafafa;
+  font-weight: 600;
+  border-bottom: 0.125rem solid #4a90e2;
+  padding-bottom: 0.3125rem;
+  display: inline-block;
+}
+
+.detail-row {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  font-weight: 600;
+  color: #fafafa;
+  width: 7.5rem;
+  flex-shrink: 0;
+}
+
+.value {
+  color: #fafafa;
+}
+
+.periods-list,
+.vans-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.periods-list li,
+.vans-list li {
+  padding: 0.375rem 0;
+  color: #343a40;
+  position: relative;
+  padding-left: 0.9375rem;
+}
+
+.periods-list li::before,
+.vans-list li::before {
+  content: '•';
+  color: #4a90e2;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.edit-button {
+  margin-top: 1.25rem;
+}
+
+.edit-button button {
+  background: #4a90e2;
+  color: #fafafa;
+  border: none;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  transition: background 0.3s ease;
+}
+
+.edit-button button:hover {
+  background: #357abd;
+}
+
+.edit-icon {
+  width: 1rem;
+  height: 1rem;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"...') no-repeat center;
+  background-size: contain;
+}
+
+.break {
+  border-bottom: 2px solid black;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+/* Pagination Styles */
+.pagination {
+  padding: 1.25rem 1.875rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  gap: 0.9375rem;
+  background: #fafafa;
 }
 
-.escolas-container .paginacao button {
-  margin: 0 0.5rem;
-  padding: 0.25rem 0.75rem;
+.prev-btn,
+.next-btn {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
-@media (max-width: 600px) {
-  .escolas-container .escola-box .escola-detalhes {
+.prev-btn:hover:not(:disabled),
+.next-btn:hover:not(:disabled) {
+  background: #e9ecef;
+}
+
+.prev-btn:disabled,
+.next-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.arrow-left,
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 0.375rem solid transparent;
+  border-bottom: 0.375rem solid transparent;
+}
+
+.arrow-left {
+  border-right: 0.5rem solid #6c757d;
+}
+
+.arrow-right {
+  border-left: 0.5rem solid #6c757d;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 0.3125rem;
+}
+
+.page-number {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.page-number:hover {
+  background: #f8f9fa;
+}
+
+.page-number.active {
+  background: #4a90e2;
+  color: #fafafa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .escolas-container {
     flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 }
