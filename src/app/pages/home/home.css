@@ -58,7 +58,8 @@ app-root {
 }
 
 .main-title {
-  font-size: 8rem;
+  font-size: 10rem;
+  font-family: Open Sans, sans-serif;
   color: rgba(44, 90, 160, 0.08);
   text-align: center;
   margin-top: 120px;

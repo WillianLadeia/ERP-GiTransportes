@@ -1,9 +1,9 @@
 <aside class="sidebar">
-  <h1 class="logo">ERP</h1>
+  <button (click)="goToHome()"><h1 class="logo">ERP</h1></button>
 
   <nav class="menu">
     <div class="menu-item">
-      <button (click)="toggleAdminMenu()" [ngClass]="{ 'active': adminOpen }">Administrativo ▾</button>
+      <button (click)="toggleAdminMenu()" [ngClass]="{ 'active': adminOpen }">Administrativo <div>▾</div></button>
       <div class="submenu" *ngIf="adminOpen" [ngClass]="{ 'ativo': adminOpen }">
         <div class="submenu-group">
           <div class="submenu-title">ALUNO</div>
@@ -27,21 +27,21 @@
     </div>
 
     <div class="menu-item">
-      <button (click)="goToggleFinanceiroMenu()">Financeiro ▾</button>
+      <button (click)="goToggleFinanceiroMenu()">Financeiro <div>▾</div></button>
       <div class="submenu" *ngIf="financeiroOpen">
         <div class="submenu-item" (click)="goToLivroCaixa()">Livro Caixa</div>
       </div>
     </div>
 
     <div class="menu-item">
-      <button (click)="goToggleFiscalMenu()">Fiscal ▾</button>
+      <button (click)="goToggleFiscalMenu()">Fiscal <div>▾</div></button>
       <div class="submenu" *ngIf="fiscalOpen">
         <div class="submenu-item" (click)="goToRelatoriosAlunosAtivos()">Relatorios de Alunos Ativos</div>
       </div>
     </div>
 
     <div class="menu-item">
-      <button (click)="goToggleSistemaMenu()">Sistema ▾</button>
+      <button (click)="goToggleSistemaMenu()">Sistema <div>▾</div></button>
       <div class="submenu" *ngIf="sistemaOpen">
         <div class="submenu-item" (click)="goToListagemUsuarios()">Listagem de Usuários</div>
       </div>

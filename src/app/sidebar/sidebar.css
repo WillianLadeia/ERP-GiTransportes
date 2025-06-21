@@ -8,13 +8,23 @@
   overflow-y: auto;
 }
 
+.sidebar > button { 
+  background-color: #2c5aa0; 
+  border: none;
+  padding: 0; 
+  cursor: pointer;
+}
+
 .logo {
-  font-size: 1.8rem;
+  font-size: 2.5rem;
   font-weight: bold;
   padding: 25px 20px;
+  margin-bottom: 20px;
+  margin-top: 10px;
   background-color:  #2c5aa0;
   text-align: center;
   letter-spacing: 1px;
+  color: white;
 }
 
 .menu {
@@ -34,7 +44,7 @@
   background: none;
   border: none;
   color: white;
-  font-size: 1rem;
+  font-size: 1.4rem;
   font-weight: 600;
   cursor: pointer;
   width: 100%;
@@ -50,7 +60,7 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.menu-item button.active { /* This rule should also move */
+.menu-item button.active { 
   background-color: #224976;
 }
 
@@ -62,7 +72,7 @@
 
 .submenu-title {
   font-weight: bold;
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: #ffffff;
   padding: 12px 0 6px 20px;
   text-transform: uppercase;
@@ -89,7 +99,7 @@
 
 .submenu-item {
   padding: 8px 20px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   cursor: pointer;
   color: #e6f0ff;
   transition: all 0.2s;
@@ -109,7 +119,7 @@
 }
 
 .user-footer {
-  background-color: #1e4080;
+  background-color: #2c5aa0;
   padding: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -122,18 +132,19 @@
 
 .user-icon {
   font-size: 1.8rem;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: white;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #2c5aa0; 
 }
 
 .user-name {
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin-bottom: 4px;
 }
 

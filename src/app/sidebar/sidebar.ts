@@ -21,6 +21,10 @@ export class Sidebar {
     this.adminOpen = !this.adminOpen;
   }
 
+  goToHome(){
+    this.router.navigate(['/home']);
+  }
+
   goToCadastroAluno() {
     this.router.navigate(['/cadastro-aluno']);
   }
