@@ -1,61 +1,116 @@
-<div class="erp-container">
-  <aside class="menu">
-    <ul>
-      <li>Administrativo</li>
-      <li>Financeiro</li>
-      <li>Fiscal</li>
-      <li>Sistema</li>
-    </ul>
-    <div class="user-info">
-      <span>Valéria da Silva Santos</span>
-      <a href="#">Sair</a>
+<!-- listagem-usuarios.html -->
+
+<div class="layout">
+  <app-sidebar></app-sidebar>
+
+  <div class="usuarios-container">
+    <!-- Header da página -->
+    <div class="page-header">
+      <h1 class="page-title">Usuários</h1>
     </div>
-  </aside>
-
-  <main class="content">
-    <h1>Usuários</h1>
-
-    <div class="top-bar">
-      <input type="text" placeholder="Buscar por nome..." [(ngModel)]="filtro" (input)="setPage(0)" />
-      <button (click)="toggleFiltros()">Filtros</button>
-      <button (click)="cadastrarUsuario()">Cadastrar Usuário</button>
-    </div>
-
-    <div *ngFor="let usuario of usuariosPaginados(); let i = index" class="usuario-card">
-      <div class="usuario-header" (click)="toggleExpand(i)">
-        <span>{{ usuario.nome }}</span>
-        <span>Status: {{ usuario.status }}</span>
+    
+    <!-- Barra de controles -->
+    <div class="controls-bar">
+      <div class="search-container">
+        <input 
+          type="text" 
+          class="search-input" 
+          placeholder="Buscar por usuário..."
+          [(ngModel)]="searchTerm"
+          (input)="onSearch()">
       </div>
+      
+      <div class="filter-btn">
+        <button (click)="toggleFilters()">
+          Filtros
+        </button>
+      </div>
+      
+      <button class="cadastrar-btn" (click)="cadastrarUsuario()">
+        Cadastrar Usuário
+      </button>
+    </div>
 
-      <div class="usuario-detalhes" *ngIf="usuario.expandido">
-        <div>
-          <strong>Usuário:</strong>
-          <input [(ngModel)]="usuario.nome" />
+    <!-- Lista de usuários -->
+    <div class="usuarios-list">
+      <div 
+        class="usuario-item" 
+        *ngFor="let usuario of usuarios; let i = index"
+        [class.expanded]="usuario.expanded">
+        
+        <!-- Header do usuário -->
+        <div class="usuario-header" (click)="toggleUsuario(i)">
+          <span class="usuario-nome">{{ usuario.nome }}</span>
+          <i class="arrow" [class.expanded]="usuario.expanded"></i>
         </div>
-
-        <div>
-          <strong>Permissões:</strong>
-          <div *ngFor="let perm of permissoes">
-            <label>
-              <input type="checkbox" [(ngModel)]="usuario.permissoes[perm]" />
-              {{ perm }}
-            </label>
+        
+        <!-- Detalhes do usuário (expandido) -->
+        <div class="usuario-details" *ngIf="usuario.expanded">
+          <div class="details-row">
+            <div class="detail-item">
+              <label>Usuário</label>
+              <input 
+                type="text" 
+                [value]="usuario.username" 
+                class="detail-input"
+                readonly>
+            </div>
+            
+            <div class="status-item">
+              <span class="status-label">Status:</span>
+              <span class="status-value" [class]="'status-' + usuario.status.toLowerCase()">
+                {{ usuario.status }}
+              </span>
+            </div>
+          </div>
+          
+          <div class="permissions-section">
+            <label class="permissions-label">Permissões</label>
+            <div class="permissions-grid">
+              <div class="permission-item" *ngFor="let permissao of usuario.permissoes">
+                <input 
+                  type="checkbox" 
+                  [id]="usuario.id + '_' + permissao.nome"
+                  [checked]="permissao.ativa"
+                  (change)="togglePermissao(i, permissao)"
+                  [disabled]="permissao.admin">
+                <label [for]="usuario.id + '_' + permissao.nome" class="permission-label">
+                  {{ permissao.nome }}
+                  <span *ngIf="permissao.admin" class="admin-tag">(admin)</span>
+                </label>
+              </div>
+            </div>
           </div>
         </div>
+        <hr class="underline">
       </div>
     </div>
 
+    <!-- Paginação -->
     <div class="pagination">
-      <button (click)="previousPage()" [disabled]="paginaAtual === 0">&#9664;</button>
-      <span
-        *ngFor="let _ of paginas; let pageIndex = index"
-        (click)="setPage(pageIndex)"
-        [class.active]="pageIndex === paginaAtual"
-        style="cursor:pointer; padding: 4px 8px; user-select:none;"
-      >
-        {{ pageIndex + 1 }}
+      <button 
+        class="pagination-btn" 
+        (click)="previousPage()" 
+        [disabled]="currentPage === 1">
+        ‹
+      </button>
+      
+      <span class="page-numbers">
+        <button 
+          *ngFor="let page of getPages()" 
+          class="page-btn"
+          [class.active]="page === currentPage"
+          (click)="goToPage(page)">
+          {{ page }}
+        </button>
       </span>
-      <button (click)="nextPage()" [disabled]="paginaAtual >= paginas.length - 1">&#9654;</button>
+      
+      <button 
+        class="pagination-btn" 
+        (click)="nextPage()" 
+        [disabled]="currentPage === totalPages">
+        ›
+      </button>
     </div>
-  </main>
+  </div>
 </div>

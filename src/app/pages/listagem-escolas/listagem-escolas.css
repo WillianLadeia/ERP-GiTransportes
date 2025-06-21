@@ -7,12 +7,10 @@
   display: flex;
   height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Main Content Styles */
-.main-content {
-  flex: 1;
+  margin-left: 280px;
+  padding: 0 20px;
   background: #fafafa;
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
@@ -21,7 +19,8 @@
   background: #fafafa;
   padding: 1.25rem 1.875rem; /* 20px 30px */
   display: flex;
-  justify-content: space-between;
+  width: auto;
+  justify-content: center;
   align-self: center;
 }
 
@@ -46,7 +45,7 @@
 }
 
 .controls {
-  padding: 1.25rem 1.875rem;
+  padding: 1.25rem 0;
   display: flex;
   gap: 0.9375rem;
   align-items: center;
@@ -77,13 +76,12 @@
   align-items: center;
   gap: 0.5rem;
   transition: all 0.3s ease;
-}
-
-.filter-button button,
-.add-button button {
   background: #326db0;
   color: #fafafa;
   font-weight: bold;
+  min-width: calc(145px + 60px);
+  display: flex;
+  justify-content: center;
 }
 
 .filter-button button:hover,
@@ -99,7 +97,6 @@
 
 /* Schools List Styles */
 .schools-list {
-  margin: 0 2% 2%;
   padding: 0 1rem 2rem;
   border-radius: 1rem;
   height: auto;
@@ -108,14 +105,13 @@
 }
 
 .school-item {
-  margin-bottom: 0.9375rem;
   overflow: hidden;
   transition: 0.3s ease;
   border-radius: 1rem;
 }
 
 .school-header {
-  padding: 1.25rem 1.5625rem 0rem;
+  padding: 1.25rem 1.5625rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -154,14 +150,15 @@
 }
 
 .school-details {
-  padding: 1.5625rem 20rem 1.5625rem 1.5625rem;
+  padding: 1.5625rem;
   background: #224976;
   border-radius: 1rem;
+  margin-bottom: 1rem;
 }
 
 .details-grid {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto auto;
   gap: 1.875rem;
 }
 
@@ -252,12 +249,6 @@
   background-size: contain;
 }
 
-.break {
-  border-bottom: 2px solid black;
-  display: inline-block;
-  padding-bottom: 4px;
-}
-
 /* Pagination Styles */
 .pagination {
   padding: 1.25rem 1.875rem;
@@ -302,11 +293,11 @@
 }
 
 .arrow-left {
-  border-right: 0.5rem solid #6c757d;
+  border-right: 0.5rem solid #101010;
 }
 
 .arrow-right {
-  border-left: 0.5rem solid #6c757d;
+  border-left: 0.5rem solid #101010;
 }
 
 .page-numbers {
@@ -331,7 +322,7 @@
 }
 
 .page-number.active {
-  background: #4a90e2;
+  background: #326db0;
   color: #fafafa;
 }
 

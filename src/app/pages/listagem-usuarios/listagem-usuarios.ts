@@ -1,89 +1,186 @@
-import { Component } from '@angular/core';
+// listagem-usuarios.ts
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Sidebar } from '../../sidebar/sidebar';
 
-interface Usuario {
+export interface Permissao {
   nome: string;
-  status: string;
-  permissoes: { [key: string]: boolean };
-  expandido: boolean;
+  ativa: boolean;
+  admin?: boolean;
+}
+
+export interface Usuario {
+  id: string;
+  nome: string;
+  username: string;
+  status: 'Ativo' | 'Inativo';
+  expanded: boolean;
+  permissoes: Permissao[];
 }
 
 @Component({
-  selector: 'app-usuarios',
-  imports: [CommonModule, FormsModule],
-  templateUrl: 'listagem-usuarios.html',
-  styleUrls: ['listagem-usuarios.css']
+  selector: 'app-listagem-usuarios',
+  standalone: true,
+  imports: [CommonModule, FormsModule, Sidebar],
+  templateUrl: './listagem-usuarios.html',
+  styleUrls: ['./listagem-usuarios.css']
 })
-export class UsuariosListagem {
-  filtro = '';
-  paginaAtual = 0;
-  itensPorPagina = 5;
-
-  permissoes = ['Administrativo', 'Financeiro', 'Fiscal', 'Sistema (admin)'];
-
+export class UsuariosListagem implements OnInit {
+  searchTerm: string = '';
+  currentPage: number = 1;
+  totalPages: number = 3;
+  itemsPerPage: number = 10;
+  
   usuarios: Usuario[] = [
     {
-      nome: 'Usuário_1',
+      id: '1',
+      nome: 'Usuário 1',
+      username: 'usuario_1',
       status: 'Ativo',
-      permissoes: { Administrativo: true, Financeiro: false, Fiscal: false, 'Sistema (admin)': false },
-      expandido: false
+      expanded: false,
+      permissoes: [
+        { nome: 'Administrativo', ativa: true },
+        { nome: 'Financeiro', ativa: true },
+        { nome: 'Fiscal', ativa: true },
+        { nome: 'Sistema', ativa: false, admin: true }
+      ]
     },
     {
-      nome: 'Usuário_2',
+      id: '2',
+      nome: 'Usuário 2',
+      username: 'Usuario_2',
       status: 'Ativo',
-      permissoes: { Administrativo: true, Financeiro: true, Fiscal: true, 'Sistema (admin)': false },
-      expandido: false
+      expanded: false,
+      permissoes: [
+        { nome: 'Administrativo', ativa: true },
+        { nome: 'Financeiro', ativa: true },
+        { nome: 'Fiscal', ativa: true },
+        { nome: 'Sistema', ativa: false, admin: true }
+      ]
     },
     {
-      nome: 'Usuário_3',
-      status: 'Ativo',
-      permissoes: { Administrativo: false, Financeiro: false, Fiscal: false, 'Sistema (admin)': true },
-      expandido: false
-    },
+      id: '3',
+      nome: 'Usuário 3',
+      username: 'usuario_3',
+      status: 'Inativo',
+      expanded: false,
+      permissoes: [
+        { nome: 'Administrativo', ativa: false },
+        { nome: 'Financeiro', ativa: false },
+        { nome: 'Fiscal', ativa: true },
+        { nome: 'Sistema', ativa: false, admin: true }
+      ]
+    }
   ];
 
-  get paginas() {
-    return Array(Math.ceil(this.usuariosFiltrados().length / this.itensPorPagina));
+  filteredUsuarios: Usuario[] = [];
+
+  constructor() { }
+
+  ngOnInit(): void {
+    this.filteredUsuarios = [...this.usuarios];
   }
 
-  usuariosFiltrados() {
-    return this.usuarios.filter(u =>
-      u.nome.toLowerCase().includes(this.filtro.toLowerCase())
-    );
+  onSearch(): void {
+    if (this.searchTerm.trim() === '') {
+      this.filteredUsuarios = [...this.usuarios];
+    } else {
+      this.filteredUsuarios = this.usuarios.filter(usuario =>
+        usuario.nome.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        usuario.username.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+    this.currentPage = 1; // Reset to first page when searching
   }
 
-  usuariosPaginados() {
-    const inicio = this.paginaAtual * this.itensPorPagina;
-    return this.usuariosFiltrados().slice(inicio, inicio + this.itensPorPagina);
+  toggleUsuario(index: number): void {
+    this.usuarios[index].expanded = !this.usuarios[index].expanded;
   }
 
-  nextPage() {
-    if (this.paginaAtual < this.paginas.length - 1) {
-      this.paginaAtual++;
+  togglePermissao(usuarioIndex: number, permissao: Permissao): void {
+    if (!permissao.admin) {
+      permissao.ativa = !permissao.ativa;
+      // Aqui você pode adicionar lógica para salvar as alterações
+      console.log(`Permissão ${permissao.nome} alterada para ${permissao.ativa} no usuário ${this.usuarios[usuarioIndex].nome}`);
     }
   }
 
-  previousPage() {
-    if (this.paginaAtual > 0) {
-      this.paginaAtual--;
+  toggleFilters(): void {
+    // Implementar lógica para exibir/ocultar filtros
+    console.log('Toggleando filtros');
+  }
+
+  cadastrarUsuario(): void {
+    // Implementar lógica para cadastrar novo usuário
+    console.log('Cadastrando novo usuário');
+  }
+
+  getPages(): number[] {
+    const pages: number[] = [];
+    const startPage = Math.max(1, this.currentPage - 2);
+    const endPage = Math.min(this.totalPages, this.currentPage + 2);
+    
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(i);
+    }
+    
+    return pages;
+  }
+
+  goToPage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      // Implementar lógica para carregar dados da página
+      console.log(`Navegando para página ${page}`);
     }
   }
 
-  setPage(index: number) {
-    this.paginaAtual = index;
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      console.log(`Página anterior: ${this.currentPage}`);
+    }
   }
 
-  toggleFiltros() {
-    alert('Filtros adicionais podem ser implementados aqui.');
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      console.log(`Próxima página: ${this.currentPage}`);
+    }
   }
 
-  cadastrarUsuario() {
-    alert('Abrir formulário para cadastro de novo usuário...');
+  // Métodos auxiliares para integração com backend
+  
+  async loadUsuarios(): Promise<void> {
+    try {
+      // Implementar chamada para API
+      // const response = await this.usuarioService.getUsuarios();
+      // this.usuarios = response.usuarios;
+      // this.totalPages = response.totalPages;
+      console.log('Carregando usuários do backend...');
+    } catch (error) {
+      console.error('Erro ao carregar usuários:', error);
+    }
   }
 
-  toggleExpand(index: number) {
-    const usuario = this.usuariosPaginados()[index];
-    usuario.expandido = !usuario.expandido;
+  async savePermissoes(usuarioId: string, permissoes: Permissao[]): Promise<void> {
+    try {
+      // Implementar chamada para API
+      // await this.usuarioService.updatePermissoes(usuarioId, permissoes);
+      console.log(`Salvando permissões do usuário ${usuarioId}`, permissoes);
+    } catch (error) {
+      console.error('Erro ao salvar permissões:', error);
+    }
+  }
+
+  async updateUsuarioStatus(usuarioId: string, status: 'Ativo' | 'Inativo'): Promise<void> {
+    try {
+      // Implementar chamada para API
+      // await this.usuarioService.updateStatus(usuarioId, status);
+      console.log(`Atualizando status do usuário ${usuarioId} para ${status}`);
+    } catch (error) {
+      console.error('Erro ao atualizar status:', error);
+    }
   }
 }

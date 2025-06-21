@@ -7,9 +7,6 @@
     <!-- Header -->
     <div class="header">
       <h1>Escolas</h1>
-      <div class="search-icon">
-        <i class="search"></i>
-      </div>
     </div>
 
     <!-- Controls -->
@@ -17,16 +14,14 @@
       <div class="search-bar">
         <input 
           type="text" 
-          placeholder="Buscar por nome..."
+          placeholder="Buscar por escola..."
           [(ngModel)]="searchTerm"
           (input)="onSearch()"
         >
       </div>
       <div class="filter-button">
         <button (click)="toggleFilters()">
-          <i class="filter-icon"></i>
           Filtros
-          <i class="arrow-down"></i>
         </button>
       </div>
       <div class="add-button">
