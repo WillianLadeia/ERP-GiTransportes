@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Sidebar } from '../../sidebar/sidebar';
 
 interface LivroCaixaItem {
   tipo: string;
@@ -14,7 +15,7 @@ interface LivroCaixaItem {
 @Component({
   selector: 'app-livro-caixa',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Sidebar],
   templateUrl: './livro-caixa.html',
   styleUrls: ['./livro-caixa.css']
 })

@@ -1,25 +1,21 @@
 <div class="erp-container">
-  <aside class="menu">
-    <ul>
-      <li>Administrativo</li>
-      <li>Financeiro</li>
-      <li>Fiscal</li>
-      <li>Sistema</li>
-    </ul>
-    <div class="user-info">
-      <span>Valéria da Silva Santos</span>
-      <a href="#">Sair</a>
-    </div>
-  </aside>
+  <app-sidebar></app-sidebar>
 
   <main class="content">
-    <h1>Livro-Caixa</h1>
+    <div class="header-content"> <h1>Livro-Caixa</h1>
+      <button class="search-button">
+        🔍 </button>
+    </div>
 
-    <div class="top-bar">
-      <input type="text" placeholder="Buscar..." [(ngModel)]="filtro" />
-      <button (click)="toggleFiltros()">Filtros</button>
-      <button (click)="registrarRecebimento()">Registrar Recebimento</button>
-      <button (click)="registrarPagamento()">Registrar Pagamento</button>
+    <div class="transaction-type-selector">
+      <button class="btn-action" (click)="registrarRecebimento()">Recebimentos</button>
+      <button class="btn-action" (click)="registrarPagamento()">Pagamentos</button>
+    </div>
+
+    <div class="filter-actions-bar">
+      <button class="btn-filters" (click)="toggleFiltros()">
+        <span class="icon-filter">&#x231B;</span> Filtros <span class="icon-dropdown">▾</span>
+      </button>
     </div>
 
     <table>
@@ -42,9 +38,9 @@
           <td>{{ item.categoria }}</td>
           <td>{{ item.observacao }}</td>
           <td>{{ item.id }}</td>
-          <td>
-            <button (click)="editar(item)">✏️</button>
-            <button (click)="reverter(item)">🔄</button>
+          <td class="actions-cell">
+            <button class="action-btn-edit" (click)="editar(item)">&#x270F;&#xFE0F;</button>
+            <button class="action-btn-revert" (click)="reverter(item)">&#x21BB;&#xFE0F;</button>
           </td>
         </tr>
       </tbody>

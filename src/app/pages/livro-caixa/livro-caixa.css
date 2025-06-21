@@ -1,42 +1,17 @@
 ::ng-deep * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+* {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .erp-container {
   display: flex;
   height: 100vh;
-  font-family: Arial, sans-serif;
-}
-
-.erp-container .menu {
-  background-color: #2f65b7;
-  color: white;
-  width: 220px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.erp-container .menu ul {
-  list-style: none;
-  padding: 0;
-}
-
-.erp-container .menu ul li {
-  margin: 10px 0;
-  cursor: pointer;
-}
-
-.erp-container .menu .user-info {
-  font-size: 12px;
-}
-
-.erp-container .menu .user-info a {
-  color: white;
-  text-decoration: underline;
-  cursor: pointer;
+  background-color: #f0f2f5;
 }
 
 .erp-container .content {
@@ -44,74 +19,225 @@
   padding: 20px;
 }
 
+.header-content {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 25px; 
+  padding-right: 20px; 
+}
+
 .erp-container .content h1 {
   color: #2f65b7;
+  margin-bottom: 0; 
+  font-size: 37px;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.erp-container .content .top-bar {
+.search-button {
+  background: none; 
+  border: none; 
+  color: #2f65b7; 
+  font-size: 1.5rem; 
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.search-button:hover {
+  color: #1e4a8d; 
+}
+
+.transaction-type-selector {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  justify-content: center; 
+  margin-bottom: 25px;
+  border-radius: 8px;
+  overflow: hidden;
+  width: calc(100% - 60px); 
 }
 
-.erp-container .content .top-bar input {
-  flex: 1;
-  padding: 5px;
-}
-
-.erp-container .content .top-bar button {
-  background-color: #2f65b7;
+.btn-action {
+  background-color: #1e4a8d;
   color: white;
   border: none;
-  padding: 6px 10px;
+  padding: 17px 10px;
+  padding-inline: 10px;
   cursor: pointer;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-inline: 10px;
+  font-weight: bold;
+  font-size: 0.97rem ;
+  transition: background-color 0.2s;
+}
+
+.btn-action:hover {
+  background-color: #16366b;
+}
+
+.filter-actions-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  width: calc(100% - 40px);
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.btn-filters {
+  background-color: #1e4a8d;
+  color: white;
+  border: 1px solid #c0d9ed;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-filters:hover {
+  background-color: #e0eaff;
+  border-color: #2f65b7;
+}
+
+.btn-filters .icon-filter {
+  font-size: 1.1rem;
+}
+
+.btn-filters .icon-dropdown {
+  font-size: 1.1rem;
+  margin-left: 5px;
 }
 
 .erp-container .content table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
+  width: calc(100% - 40px);
+  margin: 0 20px 20px 20px;
+  border-collapse: separate;
+  border-spacing: 0px;
+  background-color: #2f65b7;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 8px solid #2f65b7;
 }
 
 .erp-container .content table th,
 .erp-container .content table td {
   border: 1px solid white;
   text-align: center;
-  padding: 8px;
-  background-color: #2f65b7;
+  padding: 12px 8px;
+  font-size: 0.95rem;
   color: white;
 }
 
-.erp-container .content table thead {
-  background-color: #1e4a8d;
+.erp-container .content table th:first-child,
+.erp-container .content table td:first-child {
+  border-left: none;
+}
+
+.erp-container .content table th:last-child,
+.erp-container .content table td:last-child {
+  border-right: none;
+}
+
+.erp-container .content table thead th {
+  background-color: #2f65b7;
+  font-weight: bold;
+  border-bottom: 1px solid white;
+  border-top: none;
+}
+
+.erp-container .content table tbody tr {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.erp-container .content table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.erp-container .content table tbody tr:first-child td {
+  border-top: 1px solid white;
+}
+
+.erp-container .content table tbody tr td {
+  border-top: 1px solid white;
+}
+
+
+.actions-cell button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin: 0 3px;
+  transition: color 0.2s;
+}
+
+.actions-cell button:hover {
+  color: #c0d9ed;
 }
 
 .erp-container .content .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
+  margin-top: 20px;
 }
 
 .erp-container .content .pagination span {
   cursor: pointer;
-  padding: 5px 8px;
-  background-color: white;
-  color: #2f65b7;
-  border-radius: 3px;
+  padding: 8px 12px;
+  background-color: #2f65b7;
+  color: white;
+  border-radius: 50%;
+  border: 1px solid white;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  min-width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.erp-container .content .pagination span:hover:not(.active) {
+  background-color: #1e4a8d;
+  border-color: white;
 }
 
 .erp-container .content .pagination span.active {
-  background-color: #2f65b7;
-  color: white;
+  background-color: white;
+  color: #2f65b7;
+  border-color: white;
+  font-weight: bold;
 }
 
 .erp-container .content .pagination button {
-  background-color: #2f65b7;
-  color: white;
+  background-color: transparent;
+  color: #2f65b7;
   border: none;
   padding: 5px 8px;
   cursor: pointer;
+  font-size: 1.5rem;
+  transition: color 0.2s;
+}
+
+.erp-container .content .pagination button:hover {
+  color: #1e4a8d;
 }
 
 @media (max-width: 768px) {
@@ -119,17 +245,30 @@
     flex-direction: column;
   }
 
-  .erp-container .menu {
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-
   .erp-container .content {
     padding: 10px;
   }
 
+  .erp-container .content h1 {
+    font-size: 1.5rem;
+  }
+
+  .transaction-type-selector, .filter-actions-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-transaction, .btn-filters, .btn-action {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
   .erp-container .content table {
-    font-size: 12px;
+    font-size: 0.8rem;
+  }
+
+  .erp-container .content table th,
+  .erp-container .content table td {
+    padding: 6px;
   }
 }
