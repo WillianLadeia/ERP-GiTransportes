@@ -1,0 +1,60 @@
+<aside class="sidebar">
+  <h1 class="logo">ERP</h1>
+
+  <nav class="menu">
+    <div class="menu-item">
+      <button (click)="toggleAdminMenu()" [ngClass]="{ 'active': adminOpen }">Administrativo ▾</button>
+      <div class="submenu" *ngIf="adminOpen" [ngClass]="{ 'ativo': adminOpen }">
+        <div class="submenu-group">
+          <div class="submenu-title">ALUNO</div>
+          <div class="submenu-item" (click)="goToCadastroAluno()">Cadastrar Aluno</div>
+        </div>
+        <div class="submenu-group">
+          <div class="submenu-title">ESCOLA</div>
+          <div class="submenu-item" (click)="goToListagemEscolas()">Listagem de Escolas</div>
+        </div>
+        <div class="submenu-group">
+          <div class="submenu-title">VEÍCULOS</div>
+          <div class="submenu-item" (click)="goToListagemVeiculos()">Listagem de Veículos</div>
+          <div class="submenu-item">Abastecimento</div>
+          <div class="submenu-item">Manutenção</div>
+        </div>
+        <div class="submenu-group">
+          <div class="submenu-title">FUNCIONÁRIOS</div>
+          <div class="submenu-item" (click)="goToListagemFuncionarios()">Listagem de Funcionários</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <button (click)="goToggleFinanceiroMenu()">Financeiro ▾</button>
+      <div class="submenu" *ngIf="financeiroOpen">
+        <div class="submenu-item" (click)="goToLivroCaixa()">Livro Caixa</div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <button (click)="goToggleFiscalMenu()">Fiscal ▾</button>
+      <div class="submenu" *ngIf="fiscalOpen">
+        <div class="submenu-item" (click)="goToRelatoriosAlunosAtivos()">Relatorios de Alunos Ativos</div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <button (click)="goToggleSistemaMenu()">Sistema ▾</button>
+      <div class="submenu" *ngIf="sistemaOpen">
+        <div class="submenu-item" (click)="goToListagemUsuarios()">Listagem de Usuários</div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="user-footer">
+    <div class="user-info">
+      <span class="user-icon">👤</span>
+      <div>
+        <div class="user-name">Valéria da Silva Santos</div>
+        <a class="logout" href="#">Sair ↷</a>
+      </div>
+    </div>
+  </div>
+</aside>

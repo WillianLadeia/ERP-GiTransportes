@@ -1,88 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<div class="app-container">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ERP System</title>
-</head>
+  <app-sidebar></app-sidebar> 
 
-<body>
-  <div class="app-container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <h1 class="logo">ERP</h1>
+  <main class="main-content">
+    <div class="topbar">
+      <span class="search-icon">🔍</span>
+    </div>
+    <div class="main-title">ERP</div>
 
-      <nav class="menu">
-        <!-- Administrativo -->
-        <div class="menu-item">
-          <button (click)="toggleAdminMenu()" [ngClass]="{ 'active': adminOpen }">Administrativo ▾</button>
-          <div class="submenu" *ngIf="adminOpen" [ngClass]="{ 'ativo': adminOpen }">
-            <div class="submenu-group">
-              <div class="submenu-title">ALUNO</div>
-              <div class="submenu-item" (click)="goToCadastroAluno()">Cadastrar Aluno</div>
-            </div>
-            <div class="submenu-group">
-              <div class="submenu-title">ESCOLA</div>
-              <div class="submenu-item" (click)="goToListagemEscolas()">Listagem de Escolas</div>
-            </div>
-            <div class="submenu-group">
-              <div class="submenu-title">VEÍCULOS</div>
-              <div class="submenu-item" (click)="goToListagemVeiculos()">Listagem de Veículos</div>
-              <div class="submenu-item">Abastecimento</div>
-              <div class="submenu-item">Manutenção</div>
-            </div>
-            <div class="submenu-group">
-              <div class="submenu-title">FUNCIONÁRIOS</div>
-              <div class="submenu-item" (click)="goToListagemFuncionarios()">Listagem de Funcionários</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Financeiro -->
-        <div class="menu-item">
-          <button (click)="toggleFinanceiroMenu()">Financeiro ▾</button>
-          <div class="submenu" *ngIf="financeiroOpen">
-            <div class="submenu-item" (click)="goToLivroCaixa()">Livro Caixa</div>
-          </div>
-        </div>
-
-        <!-- Fiscal -->
-        <div class="menu-item">
-          <button (click)="toggleFiscalMenu()">Fiscal ▾</button>
-          <div class="submenu" *ngIf="fiscalOpen">
-            <div class="submenu-item" (click)="goToRelatoriosAlunosAtivos()">Relatorios de Alunos Ativos</div>
-          </div>
-        </div>
-
-        <!-- Sistema -->
-        <div class="menu-item">
-          <button (click)="toggleSistemaMenu()">Sistema ▾</button>
-          <div class="submenu" *ngIf="sistemaOpen">
-            <div class="submenu-item" (click)="goToListagemUsuarios()">Listagem de Usuários</div>
-          </div>
-        </div>
-      </nav>
-
-      <div class="user-footer">
-        <div class="user-info">
-          <span class="user-icon">👤</span>
-          <div>
-            <div class="user-name">Valéria da Silva Santos</div>
-            <a class="logout" href="#">Sair ↷</a>
-          </div>
-        </div>
-      </div>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="main-content">
-      <div class="topbar">
-        <span class="search-icon">🔍</span>
-      </div>
-      <div class="main-title">ERP</div>
-    </main>
-  </div>
-</body>
-
-</html>
+  </main>
+</div>

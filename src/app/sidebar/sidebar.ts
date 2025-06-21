@@ -1,24 +1,21 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router'; 
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
-import { NgModule } from '@angular/core';
-import { Sidebar } from '../../sidebar/sidebar';
 
-export class HomeModule { }
 @Component({
-  selector: 'app-home',
-  standalone: true, 
-  imports: [CommonModule, Sidebar], 
-  templateUrl: './home.html',
-  styleUrls: ['./home.css'] 
+  selector: 'app-sidebar', 
+  templateUrl: './sidebar.html',
+  styleUrls: ['./sidebar.css'],
+  imports: [CommonModule]
 })
-export class Home {
-  adminOpen = false;
-  financeiroOpen = false;
-  fiscalOpen = false;
-  sistemaOpen = false;
+export class Sidebar {
+  // Properties to control submenu visibility
+  adminOpen: boolean = false;
+  financeiroOpen: boolean = false;
+  fiscalOpen: boolean = false;
+  sistemaOpen: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) { } // Inject Router
 
   toggleAdminMenu() {
     this.adminOpen = !this.adminOpen;
@@ -53,15 +50,15 @@ export class Home {
   }
 
 
-  toggleFinanceiroMenu() {
+  goToggleFinanceiroMenu() {
     this.financeiroOpen = !this.financeiroOpen;
   }
 
-  toggleFiscalMenu() {
+  goToggleFiscalMenu() {
     this.fiscalOpen = !this.fiscalOpen;
   }
 
-  toggleSistemaMenu() {
+  goToggleSistemaMenu() {
     this.sistemaOpen = !this.sistemaOpen;
   }
 }
