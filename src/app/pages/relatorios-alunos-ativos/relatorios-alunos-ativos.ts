@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Sidebar } from '../../sidebar/sidebar';
 
 interface Aluno {
   nome: string;
@@ -11,7 +12,7 @@ interface Aluno {
 
 @Component({
   selector: 'app-relatorio-alunos-ativos',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Sidebar],
   templateUrl: './relatorios-alunos-ativos.html',
   styleUrls: ['./relatorios-alunos-ativos.css']
 })
