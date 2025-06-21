@@ -67,7 +67,7 @@ export class EscolasComponent implements OnInit {
       },
       periodos: ['Manhã', 'Tarde', 'Noite'],
       vans: ['Van 1', 'Van 2'],
-      expanded: true
+      expanded: false
     },
     {
       id: 3,
