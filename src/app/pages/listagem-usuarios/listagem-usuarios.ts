@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Sidebar } from '../../sidebar/sidebar';
+import { SearchCompassComponent,} from '../../search-compass.component/search-compass.component';
+
 
 export interface Permissao {
   nome: string;
@@ -22,7 +24,7 @@ export interface Usuario {
 @Component({
   selector: 'app-listagem-usuarios',
   standalone: true,
-  imports: [CommonModule, FormsModule, Sidebar],
+  imports: [CommonModule, FormsModule, Sidebar, SearchCompassComponent],
   templateUrl: './listagem-usuarios.html',
   styleUrls: ['./listagem-usuarios.css']
 })

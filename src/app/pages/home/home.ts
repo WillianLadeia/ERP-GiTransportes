@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { Sidebar } from '../../sidebar/sidebar';
+import { SearchCompassComponent,} from '../../search-compass.component/search-compass.component';
+
 
 export class HomeModule { }
 @Component({
   selector: 'app-home',
   standalone: true, 
-  imports: [CommonModule, Sidebar], 
+  imports: [CommonModule, Sidebar, SearchCompassComponent], 
   templateUrl: './home.html',
   styleUrls: ['./home.css'] 
 })

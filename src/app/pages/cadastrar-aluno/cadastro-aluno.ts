@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Sidebar } from "../../sidebar/sidebar";
+import { SearchCompassComponent} from '../../search-compass.component/search-compass.component';
+
 
 interface Aluno {
   nome: string;
@@ -42,10 +44,11 @@ interface Financeiro {
 @Component({
   selector: 'app-listagem-alunos',
   standalone: true,
-  imports: [CommonModule, FormsModule, Sidebar],
+  imports: [CommonModule, FormsModule, Sidebar, SearchCompassComponent],
   templateUrl: './cadastro-aluno.html',
   styleUrls: ['./cadastro-aluno.css']
 })
+
 export class CadastroAluno {
   aluno: Aluno = {
     nome: 'Arthur Montgomery',

@@ -2,6 +2,7 @@
 import { Component, ElementRef, EventEmitter, HostListener, Output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 export interface SearchResult {
   id: string;
@@ -28,13 +29,15 @@ export class SearchCompassComponent {
   filteredResults: SearchResult[] = [];
   selectedIndex = -1;
 
+  constructor(private router: Router) { } // Inject Router
+
   // Dicionário de dados para busca
   private searchData: SearchResult[] = [
     {
       id: '1',
       title: 'Arthur Montgomery',
       description: 'Visualize métricas e estatísticas gerais do sistema',
-      url: '/dashboard'
+      url: '/pages/cadastrar-aluno'
     },
     {
       id: '2',
@@ -104,8 +107,7 @@ export class SearchCompassComponent {
   }
 
   selectResult(result: SearchResult): void {
-    this.resultSelected.emit(result);
-    this.closeSearch();
+    this.router.navigate(['/cadastro-aluno']);
   }
 
   selectFirstResult(): void {

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Sidebar } from '../../sidebar/sidebar';
+import { SearchCompassComponent,} from '../../search-compass.component/search-compass.component';
+
 
 interface Aluno {
   nome: string;
@@ -12,7 +14,7 @@ interface Aluno {
 
 @Component({
   selector: 'app-relatorio-alunos-ativos',
-  imports: [CommonModule, FormsModule, Sidebar],
+  imports: [CommonModule, FormsModule, Sidebar, SearchCompassComponent],
   templateUrl: './relatorios-alunos-ativos.html',
   styleUrls: ['./relatorios-alunos-ativos.css']
 })

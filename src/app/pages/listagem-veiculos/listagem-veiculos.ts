@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Sidebar } from "../../sidebar/sidebar";
+import { SearchCompassComponent,} from '../../search-compass.component/search-compass.component';
+
 
 interface Veiculo {
   nome: string;
@@ -17,7 +19,7 @@ interface Veiculo {
 @Component({
   selector: 'app-veiculos-listagem',
   standalone: true,
-  imports: [CommonModule, FormsModule, Sidebar],
+  imports: [CommonModule, FormsModule, Sidebar, SearchCompassComponent],
   templateUrl: './listagem-veiculos.html',
   styleUrls: ['./listagem-veiculos.css']
 })

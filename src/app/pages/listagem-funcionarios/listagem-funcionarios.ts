@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Sidebar } from '../../sidebar/sidebar';
+import { SearchCompassComponent,} from '../../search-compass.component/search-compass.component';
+
 
 interface Funcionario {
   nome: string;
@@ -20,7 +22,7 @@ interface Funcionario {
 
 @Component({
   selector: 'app-funcionarios-list',
-  imports: [CommonModule, FormsModule, Sidebar],
+  imports: [CommonModule, FormsModule, Sidebar, SearchCompassComponent],
   templateUrl: './listagem-funcionarios.html',
   styleUrls: ['./listagem-funcionarios.css']
 })
