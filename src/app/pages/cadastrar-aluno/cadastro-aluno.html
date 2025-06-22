@@ -1,13 +1,25 @@
 <app-sidebar></app-sidebar>
 
 <div class="cadastro-container">
+  <button class="search-icon-button">
+      🔍
+  </button>
+
   <div class="header">
-    <h1>{{ aluno.nome }}</h1>
-    <p><strong>Código:</strong> {{ aluno.codigo }}</p>
+    <div class="header-content-wrapper">
+      <h1>{{ aluno.nome }}</h1>
+      <p><strong>Código:</strong> {{ aluno.codigo }}</p>
+    </div>
   </div>
 
   <section>
-    <h2>Informações do aluno</h2>
+    <div class="section-header-wrapper">
+      <h2>Informações do aluno</h2>
+      <div class="header-icons">
+        <button class="action-icon-btn">&#x21BB;</button>
+        <button class="action-icon-btn">&#x270E;</button>
+      </div>
+    </div>
     <div class="info-row">
       <div><strong>Nome:</strong> {{ aluno.nome }}</div>
       <div><strong>Data de nascimento:</strong> {{ aluno.nascimento }}</div>
@@ -18,7 +30,13 @@
   </section>
 
   <section>
-    <h2>Informações do responsável</h2>
+    <div class="section-header-wrapper">
+      <h2>Informações do responsável</h2>
+      <div class="header-icons">
+        <button class="action-icon-btn">&#x21BB;</button>
+        <button class="action-icon-btn">&#x270E;</button>
+      </div>
+    </div>
     <div class="info-row">
       <div><strong>Nome:</strong> {{ responsavel.nome }}</div>
       <div><strong>Data de nascimento:</strong> {{ responsavel.dataNascimento }}</div>
@@ -30,7 +48,13 @@
   </section>
 
   <section>
-    <h2>Endereço</h2>
+    <div class="section-header-wrapper">
+      <h2>Endereço</h2>
+      <div class="header-icons">
+        <button class="action-icon-btn">&#x21BB;</button>
+        <button class="action-icon-btn">&#x270E;</button>
+      </div>
+    </div>
     <div class="info-row">
       <div><strong>Rua:</strong> {{ endereco.rua }}</div>
       <div><strong>Nº Casa:</strong> {{ endereco.numero }}</div>
@@ -46,7 +70,13 @@
   </section>
 
   <section>
-    <h2>Escola</h2>
+    <div class="section-header-wrapper">
+      <h2>Escola</h2>
+      <div class="header-icons">
+        <button class="action-icon-btn">&#x21BB;</button>
+        <button class="action-icon-btn">&#x270E;</button>
+      </div>
+    </div>
     <div class="info-row">
       <div><strong>Escola:</strong> {{ escola.nome }}</div>
       <div><strong>Período:</strong> {{ escola.periodo }}</div>
@@ -55,7 +85,13 @@
   </section>
 
   <section>
-    <h2>Financeiro</h2>
+    <div class="section-header-wrapper">
+      <h2>Financeiro</h2>
+      <div class="header-icons">
+        <button class="action-icon-btn">&#x21BB;</button>
+        <button class="action-icon-btn">&#x270E;</button>
+      </div>
+    </div>
     <div class="info-row">
       <div><strong>Mensalidade:</strong> R$ {{ financeiro.mensalidade | number:'1.2-2' }}</div>
       <div><strong>Dia do pagamento:</strong> {{ financeiro.diaPagamento }}</div>
@@ -63,7 +99,13 @@
   </section>
 
   <section>
-    <h2>Anotações</h2>
+    <div class="section-header-wrapper">
+      <h2>Anotações</h2>
+      <div class="header-icons">
+        <button class="action-icon-btn">&#x21BB;</button>
+        <button class="action-icon-btn">&#x270E;</button>
+      </div>
+    </div>
     <textarea [(ngModel)]="anotacoes" placeholder="Digite aqui..."></textarea>
   </section>
 </div>
