@@ -8,6 +8,10 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+.content{
+  margin-left: 140px;
+}
+
 .erp-container {
   display: flex;
   height: 100vh;

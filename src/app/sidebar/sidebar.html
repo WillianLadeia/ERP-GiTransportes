@@ -27,21 +27,21 @@
     </div>
 
     <div class="menu-item">
-      <button (click)="goToggleFinanceiroMenu()">Financeiro <div>▾</div></button>
+      <button (click)="goToggleFinanceiroMenu() "[ngClass]="{ 'active': financeiroOpen }" >Financeiro <div>▾</div></button>
       <div class="submenu" *ngIf="financeiroOpen">
         <div class="submenu-item" (click)="goToLivroCaixa()">Livro Caixa</div>
       </div>
     </div>
 
     <div class="menu-item">
-      <button (click)="goToggleFiscalMenu()">Fiscal <div>▾</div></button>
+      <button (click)="goToggleFiscalMenu()" [ngClass]="{ 'active': fiscalOpen }">Fiscal <div>▾</div></button>
       <div class="submenu" *ngIf="fiscalOpen">
         <div class="submenu-item" (click)="goToRelatoriosAlunosAtivos()">Relatorios de Alunos Ativos</div>
       </div>
     </div>
 
     <div class="menu-item">
-      <button (click)="goToggleSistemaMenu()">Sistema <div>▾</div></button>
+      <button (click)="goToggleSistemaMenu()" [ngClass]="{ 'active': sistemaOpen }">Sistema <div>▾</div></button>
       <div class="submenu" *ngIf="sistemaOpen">
         <div class="submenu-item" (click)="goToListagemUsuarios()">Listagem de Usuários</div>
       </div>

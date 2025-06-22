@@ -1,38 +1,59 @@
-<div class="veiculos-container">
-  <div class="top-bar">
-    <button class="btn">Registrar Manutenção</button>
-    <button class="btn">Registrar Abastecimento</button>
-    <input type="text" placeholder="Buscar por nome..." (input)="buscar($event)" />
-    <button class="btn">Filtros</button>
-    <button class="btn">Cadastrar Veículo</button>
+<app-sidebar></app-sidebar>
+
+<div class="veiculos-page-container">
+  <div class="header-veiculos-content">
+    <h1>Veículos</h1>
+    <button class="search-icon-button">
+      🔍
+    </button>
   </div>
 
-  <div class="veiculo-box" *ngFor="let veiculo of veiculosFiltrados">
-    <div class="veiculo-header" (click)="toggleExpandir(veiculo)">
-      {{ veiculo.nome }}
+  <div class="top-actions-bar">
+    <div class="registration-buttons-row">
+      <button class="action-btn">Registrar Manutenção</button>
+      <button class="action-btn">Registrar Abastecimento</button>
     </div>
-
-    <div class="veiculo-detalhes" *ngIf="veiculo.expandido">
-      <div class="col">
-        <p><strong>Placa:</strong> {{ veiculo.placa }}</p>
-        <p><strong>Modelo:</strong> {{ veiculo.modelo }}</p>
-        <p><strong>Capacidade:</strong> {{ veiculo.capacidade }}</p>
-      </div>
-      <div class="col">
-        <p><strong>Identificação:</strong> {{ veiculo.identificacao }}</p>
-        <p><strong>Ano de fabricação:</strong> {{ veiculo.anoFabricacao }}</p>
-        <p><strong>Data de aquisição:</strong> {{ veiculo.dataAquisicao }}</p>
-      </div>
-      <div class="acoes">
-        <button class="btn icone">🛠️</button>
-        <button class="btn icone">✏️</button>
-      </div>
+    
+    <div class="search-filter-cadastrar-row">
+      <input type="text" placeholder="Buscar por nome..." class="search-input" (input)="buscar($event)" />
+      <button class="filter-btn">
+        <span class="icon-filter-btn">&#x231B;</span> Filtros <span class="icon-dropdown-btn">▾</span>
+      </button>
+      <button class="action-btn">Cadastrar Veículo</button>
     </div>
   </div>
 
-  <div class="paginacao">
-    <button [disabled]="paginaAtual === 1">&lt;</button>
-    <span>{{ paginaAtual }}</span>
-    <button>&gt;</button>
+  <div class="veiculo-list">
+    <div class="veiculo-item-box" *ngFor="let veiculo of itensPaginados()">
+      <div class="veiculo-item-header" (click)="toggleExpandir(veiculo)">
+        <span>{{ veiculo.nome }}</span>
+        <span class="expand-icon">{{ veiculo.expandido ? '&#9650;' : '&#9660;' }}</span>
+      </div>
+
+      <div class="veiculo-item-details" *ngIf="veiculo.expandido">
+        <div class="details-actions">
+          <button class="action-icon-btn">&#x2692;</button>
+          <button class="action-icon-btn">&#x270E;</button>
+        </div>
+        <div class="details-col">
+          <p><strong>Placa:</strong> {{ veiculo.placa }}</p>
+          <p><strong>Modelo:</strong> {{ veiculo.modelo }}</p>
+          <p><strong>Capacidade:</strong> {{ veiculo.capacidade }}</p>
+        </div>
+        <div class="details-col">
+          <p><strong>Identificação:</strong> {{ veiculo.identificacao }}</p>
+          <p><strong>Ano de fabricação:</strong> {{ veiculo.anoFabricacao }}</p>
+          <p><strong>Data de aquisição:</strong> {{ veiculo.dataAquisicao }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination-controls">
+    <button class="pagination-arrow" (click)="previousPage()" [disabled]="paginaAtual === 1">&#9664;</button>
+    <span class="pagination-number" *ngFor="let p of paginas; let i = index" (click)="setPage(i)" [class.active]="i === paginaAtual">
+      {{ i + 1 }}
+    </span>
+    <button class="pagination-arrow" (click)="nextPage()">&#9654;</button>
   </div>
 </div>

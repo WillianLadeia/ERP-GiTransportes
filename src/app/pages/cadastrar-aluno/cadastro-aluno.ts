@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Sidebar } from '../../sidebar/sidebar';
 
 @Component({
   selector: 'app-cadastro-aluno',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Sidebar],
   templateUrl: './cadastro-aluno.html',
   styleUrls: ['./cadastro-aluno.css']
 })

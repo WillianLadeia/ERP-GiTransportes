@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Sidebar } from "../../sidebar/sidebar";
 
 interface Veiculo {
   nome: string;
@@ -15,13 +16,14 @@ interface Veiculo {
 
 @Component({
   selector: 'app-veiculos-listagem',
-  imports: [CommonModule, FormsModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule, Sidebar],
   templateUrl: './listagem-veiculos.html',
   styleUrls: ['./listagem-veiculos.css']
 })
 export class VeiculosListagem {
   veiculos: Veiculo[] = [
-    { nome: 'Veículo1', expandido: false },
+    { nome: 'Veículo 1', expandido: false },
     {
       nome: 'Veículo 2',
       placa: 'GYR-1845',
@@ -40,6 +42,12 @@ export class VeiculosListagem {
 
   veiculosFiltrados: Veiculo[] = [...this.veiculos];
   paginaAtual = 1;
+  itensPorPagina = 6;
+  paginas: number[] = [];
+
+  constructor() {
+    this.calcularPaginas();
+  }
 
   toggleExpandir(veiculo: Veiculo): void {
     veiculo.expandido = !veiculo.expandido;
@@ -53,6 +61,34 @@ export class VeiculosListagem {
     this.veiculosFiltrados = this.veiculos.filter(v =>
       v.nome.toLowerCase().includes(termo)
     );
+    this.paginaAtual = 1;
+    this.calcularPaginas();
   }
 
+  itensPaginados(): Veiculo[] {
+    const inicio = (this.paginaAtual - 1) * this.itensPorPagina;
+    const fim = inicio + this.itensPorPagina;
+    return this.veiculosFiltrados.slice(inicio, fim);
+  }
+
+  calcularPaginas(): void {
+    const totalPaginas = Math.ceil(this.veiculosFiltrados.length / this.itensPorPagina);
+    this.paginas = Array.from({ length: totalPaginas }, (_, i) => i + 1);
+  }
+
+  previousPage(): void {
+    if (this.paginaAtual > 1) {
+      this.paginaAtual--;
+    }
+  }
+
+  nextPage(): void {
+    if (this.paginaAtual < this.paginas.length) {
+      this.paginaAtual++;
+    }
+  }
+
+  setPage(pageIndex: number): void {
+    this.paginaAtual = pageIndex + 1;
+  }
 }

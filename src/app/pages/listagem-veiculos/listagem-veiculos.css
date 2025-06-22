@@ -1,89 +1,338 @@
 ::ng-deep * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.veiculos-container {
-  padding: 2rem;
-  font-family: Arial, sans-serif;
+* {
+  font-family: 'Open Sans', sans-serif;
 }
 
-.veiculos-container .top-bar {
+.veiculos-page-container {
+  padding: 20px;
+  margin-left: 275px;
+  background-color: #f0f2f5;
+  flex: 1;
+}
+
+.header-veiculos-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-right: 15px;
+}
+
+.header-veiculos-content h1 {
+  color: #2f65b7;
+  font-size: 37px;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-icon-button {
+  background: none;
+  border: none;
+  color: #2f65b7;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.search-icon-button:hover {
+  color: #1e4a8d;
+}
+
+.top-actions-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+  align-items: flex-start;
+}
+
+.registration-buttons-row {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.search-filter-cadastrar-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 10px;
+  justify-content: flex-start;
+  width: 100%;
 }
 
-.veiculos-container .top-bar input {
-  flex: 1;
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.veiculos-container .top-bar .btn {
-  padding: 0.5rem 1rem;
-  background: #2a6bbf;
+.action-btn {
+  background-color: #2f65b7;
   color: white;
-  border: none;
-  border-radius: 5px;
+  border: none;;
+  padding: 10px 15px;
   cursor: pointer;
-}
-
-.veiculos-container .veiculo-box {
-  background: #2a6bbf;
-  color: white;
   border-radius: 10px;
-  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+  white-space: nowrap;
 }
 
-.veiculos-container .veiculo-box .veiculo-header {
-  padding: 1rem;
+.action-btn:hover {
+  background-color: #1e4a8d;
+}
+
+.search-input {
+  flex: none;
+  width: 250px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid #c0d9ed;
+  font-size: 0.95rem;
+  color: #2f65b7;
+}
+
+.search-input::placeholder {
+  color: #888;
+}
+
+.filter-btn {
+  background-color: #2f65b7;
+  color: white;
+  border: 1px solid #c0d9ed;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.filter-btn:hover {
+  background-color: #1e4a8d;
+  border-color: #2f65b7;
+}
+
+.filter-btn .icon-filter-btn {
+  font-size: 1.1rem;
+}
+
+.filter-btn .icon-dropdown-btn {
+  font-size: 0.7rem;
+}
+
+.veiculo-list {
+  background-color: #2f65b7;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.veiculo-item-box {
+  background-color: #2f65b7;
+  color: white;
+  border-radius: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.veiculo-item-header {
+  padding: 15px 20px;
   font-weight: bold;
   cursor: pointer;
-  border-bottom: 1px solid #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  border-bottom: 1px solid white;
+  margin: 0 10px;
+  background-color: #2f65b7;
 }
 
-.veiculos-container .veiculo-box .veiculo-detalhes {
+.veiculo-item-header:hover {
+  background-color: #1e4a8d;
+}
+
+.veiculo-item-box:last-child .veiculo-item-header {
+  border-bottom: none;
+}
+
+.veiculo-item-details {
   display: flex;
   flex-wrap: wrap;
+  padding: 15px 20px;
+  background-color: #1e4a8d;
+  border-radius: 0;
   justify-content: space-between;
-  padding: 1rem;
-  background: #1d4f91;
-  border-radius: 0 0 10px 10px;
+  align-items: flex-start;
 }
 
-.veiculos-container .veiculo-box .veiculo-detalhes .col {
-  flex: 1 1 250px;
-  margin-right: 2rem;
+.veiculo-item-details .details-col {
+  flex: 1 1 45%;
+  margin-right: 20px;
+  margin-bottom: 10px;
 }
 
-.veiculos-container .veiculo-box .veiculo-detalhes .acoes {
+.veiculo-item-details .details-col p {
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+}
+
+.veiculo-item-details .details-col strong {
+  font-weight: bold;
+}
+
+.details-actions {
   display: flex;
-  gap: 0.5rem;
-  align-items: start;
-  margin-top: 1rem;
+  gap: 10px;
+  /* margin-left: auto; -- Removido, pois justify-content vai cuidar do alinhamento */
+  justify-content: flex-end; /* Alinha os itens flexíveis à direita */
+  align-self: flex-start;
+  order: -1;
+  width: 100%; /* Ocupa a largura total para que justify-content funcione */
 }
 
-.veiculos-container .veiculo-box .veiculo-detalhes .acoes .icone {
-  background: #3c8ce7;
+.action-icon-btn {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-.veiculos-container .paginacao {
+.action-icon-btn:hover {
+  background-color: white;
+  color: #1e4a8d;
+}
+
+.pagination-controls {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  gap: 8px;
+  margin-top: 20px;
 }
 
-.veiculos-container .paginacao button {
-  margin: 0 0.5rem;
-  padding: 0.25rem 0.75rem;
+.pagination-arrow {
+  background-color: #2f65b7;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
 }
 
-@media (max-width: 600px) {
-  .veiculos-container .veiculo-detalhes {
+.pagination-arrow:hover:not(:disabled) {
+  background-color: #1e4a8d;
+}
+
+.pagination-arrow:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-number {
+  cursor: pointer;
+  padding: 8px 12px;
+  background-color: white;
+  color: #2f65b7;
+  border-radius: 50%;
+  border: 1px solid #c0d9ed;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  min-width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-number:hover:not(.active) {
+  background-color: #e0eaff;
+}
+
+.pagination-number.active {
+  background-color: #2f65b7;
+  color: white;
+  border-color: #2f65b7;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .veiculos-page-container {
+    padding: 10px;
+    margin-left: 0;
+  }
+
+  .header-veiculos-content {
     flex-direction: column;
+    align-items: flex-start;
+    padding-right: 0;
+  }
+
+  .header-veiculos-content h1 {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .search-icon-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .top-actions-bar {
+    align-items: stretch;
+  }
+
+  .registration-buttons-row,
+  .search-filter-cadastrar-row {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .action-btn, .filter-btn, .search-input {
+    width: 100%;
+  }
+
+  .veiculo-item-details {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .veiculo-item-details .details-col {
+    margin-right: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .details-actions {
+    order: -1;
+    margin-left: 0;
+    margin-top: 0;
+    justify-content: center; /* Centraliza para mobile */
+    width: 100%;
+    margin-bottom: 15px;
   }
 }

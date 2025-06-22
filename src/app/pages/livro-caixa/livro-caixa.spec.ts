@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { LivroCaixa } from './livro-caixa';
+import { Sidebar } from '../../sidebar/sidebar';
 
 describe('LivroCaixa', () => {
   let component: LivroCaixa;
@@ -9,7 +10,7 @@ describe('LivroCaixa', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LivroCaixa],
-      imports: [FormsModule]
+      imports: [FormsModule, Sidebar]
     }).compileComponents();
   });
 

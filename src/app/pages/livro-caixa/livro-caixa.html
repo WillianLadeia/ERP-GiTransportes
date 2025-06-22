@@ -6,52 +6,52 @@
       <button class="search-button">
         🔍 </button>
     </div>
+      <div class="transaction-type-selector">
+        <button class="btn-action" (click)="registrarRecebimento()">Recebimentos</button>
+        <button class="btn-action" (click)="registrarPagamento()">Pagamentos</button>
+      </div>
 
-    <div class="transaction-type-selector">
-      <button class="btn-action" (click)="registrarRecebimento()">Recebimentos</button>
-      <button class="btn-action" (click)="registrarPagamento()">Pagamentos</button>
-    </div>
+      <div class="content">
+      <div class="filter-actions-bar">
+        <button class="btn-filters" (click)="toggleFiltros()">
+          <span class="icon-filter">&#x231B;</span> Filtros <span class="icon-dropdown">▾</span>
+        </button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Data</th>
+            <th>Valor</th>
+            <th>Categoria</th>
+            <th>Observação</th>
+            <th>ID</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of itensPaginados()">
+            <td>{{ item.tipo }}</td>
+            <td>{{ item.data }}</td>
+            <td>{{ item.valor }}</td>
+            <td>{{ item.categoria }}</td>
+            <td>{{ item.observacao }}</td>
+            <td>{{ item.id }}</td>
+            <td class="actions-cell">
+              <button class="action-btn-edit" (click)="editar(item)">&#x270F;&#xFE0F;</button>
+              <button class="action-btn-revert" (click)="reverter(item)">&#x21BB;&#xFE0F;</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-    <div class="filter-actions-bar">
-      <button class="btn-filters" (click)="toggleFiltros()">
-        <span class="icon-filter">&#x231B;</span> Filtros <span class="icon-dropdown">▾</span>
-      </button>
-    </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Tipo</th>
-          <th>Data</th>
-          <th>Valor</th>
-          <th>Categoria</th>
-          <th>Observação</th>
-          <th>ID</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of itensPaginados()">
-          <td>{{ item.tipo }}</td>
-          <td>{{ item.data }}</td>
-          <td>{{ item.valor }}</td>
-          <td>{{ item.categoria }}</td>
-          <td>{{ item.observacao }}</td>
-          <td>{{ item.id }}</td>
-          <td class="actions-cell">
-            <button class="action-btn-edit" (click)="editar(item)">&#x270F;&#xFE0F;</button>
-            <button class="action-btn-revert" (click)="reverter(item)">&#x21BB;&#xFE0F;</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="pagination">
-      <button (click)="previousPage()">&#9664;</button>
-      <span *ngFor="let p of paginas; let i = index" (click)="setPage(i)" [class.active]="i === paginaAtual">
-        {{ i + 1 }}
-      </span>
-      <button (click)="nextPage()">&#9654;</button>
+      <div class="pagination">
+        <button (click)="previousPage()">&#9664;</button>
+        <span *ngFor="let p of paginas; let i = index" (click)="setPage(i)" [class.active]="i === paginaAtual">
+          {{ i + 1 }}
+        </span>
+        <button (click)="nextPage()">&#9654;</button>
+      </div>
     </div>
   </main>
 </div>
