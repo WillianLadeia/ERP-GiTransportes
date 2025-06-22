@@ -1,6 +1,7 @@
 ::ng-deep * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -77,9 +78,9 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px; 
-  padding-bottom: 10px; 
-  border-bottom: 2px solid #2f67ac; 
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #2f67ac;
 }
 
 section h2 {
@@ -90,18 +91,20 @@ section h2 {
 
 .header-icons {
   display: flex;
-  gap: 10px; 
+  gap: 10px;
 }
 
 .action-icon-btn {
   background: none;
-  border: none; 
-  color: #2f67ac; 
-  font-size: 1.4rem;
-
-  width: auto; 
-  height: auto; 
-  border-radius: 0; 
+  border: none;
+  color: #2f67ac;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+  padding: 0;
+  width: auto;
+  height: auto;
+  border-radius: 0;
 }
 
 .action-icon-btn:hover {
@@ -141,6 +144,217 @@ textarea:focus {
   border-color: #2f67ac;
 }
 
+/* Estilos do Pop-up */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.popup-content-new-style {
+  background-color: #2f67ac;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 95%; /* Aumentado de 90% */
+  max-width: 1000px; /* Aumentado de 800px */
+  animation: fadeIn 0.3s ease-out;
+}
+
+.popup-title-new-style {
+  color: white;
+  margin-bottom: 25px;
+  text-align: left;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.form-row-new-style {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* diminuído de 30px */
+  margin-bottom: 15px; /* diminuído para aproximar as linhas */
+}
+
+.form-group-new-style {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.label-col1 label {
+  width: 130px;
+  text-align: right;
+  color: white;
+  font-weight: bold;
+  margin-right: 6px; /* reduzido para aproximar do input */
+}
+
+.label-col2 label {
+  width: 180px;
+  text-align: right;
+  color: white;
+  font-weight: bold;
+  margin-right: 6px; /* reduzido também */
+}
+
+.form-group-new-style input[type="text"] {
+  flex: 1;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: white;
+  color: #333;
+}
+
+.form-group-new-style input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.popup-actions-new-style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px; /* um pouco menos */
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.3);
+}
+
+.update-btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  background-color: #f0f2f5;
+  color: #2f67ac;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  min-width: 150px;
+}
+
+.update-btn:hover {
+  background-color: #d6d8db;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.popup-title-new-style {
+  color: white;
+  margin-bottom: 25px;
+  text-align: left;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.form-row-new-style {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.form-group-new-style {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  min-height: 40px;
+}
+
+.form-group-new-style label {
+  white-space: nowrap;
+  color: white;
+  font-weight: bold;
+  /* Ajuste a largura mínima das labels. Encontre o valor máximo necessário
+     para as labels da sua primeira "coluna" (Nome, CPF) e use-o aqui.
+     E faça o mesmo para a segunda "coluna" (Data de Nascimento, RG).
+     Para um alinhamento perfeito entre as linhas, podemos usar um flex-basis fixo
+     para a label e o flex-grow para o input. */
+  min-width: 140px; /* Exemplo: Ajustado para acomodar "Data de Nascimento" + padding */
+  text-align: right;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  flex-shrink: 0;
+}
+
+.form-group-new-style input[type="text"] {
+  flex-grow: 1;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: white;
+  color: #333;
+}
+
+.form-group-new-style input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.popup-actions-new-style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.3);
+}
+
+.update-btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  background-color: #f0f2f5;
+  color: #2f67ac;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  min-width: 150px;
+}
+
+.update-btn:hover {
+  background-color: #d6d8db;
+}
+
 @media (max-width: 768px) {
   .cadastro-container {
     padding: 15px;
@@ -172,22 +386,56 @@ textarea:focus {
   }
 
   .section-header-wrapper {
-    flex-direction: column; 
-    align-items: flex-start; 
+    flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 10px;
     padding-bottom: 5px;
   }
 
   section h2 {
     font-size: 1.1rem;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
   }
 
   .header-icons {
-    justify-content: flex-start; 
-    width: 100%; 
+    justify-content: flex-start;
+    width: 100%;
   }
+
+.form-row-new-style {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 20px;
 }
+
+.form-group-new-style {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.form-group-new-style.label-col1 label {
+  width: 130px; /* largura fixa para "Nome" e "CPF" */
+  text-align: right;
+}
+
+.form-group-new-style.label-col2 label {
+  width: 180px; /* largura fixa para "Data de nascimento" e "RG" */
+  text-align: right;
+}
+
+.form-group-new-style input[type="text"] {
+  flex: 1;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: white;
+  color: #333;
+}
+
+
 
 @media (max-width: 480px) {
   .cadastro-container {
@@ -201,4 +449,9 @@ textarea:focus {
   .header h1 {
     font-size: 1.3rem;
   }
-}
+
+  .update-btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}}

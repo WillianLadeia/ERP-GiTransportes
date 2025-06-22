@@ -2,8 +2,9 @@
 
 <div class="cadastro-container">
   <button class="search-icon-button">
-      🔍
+      &#x1F50D;
   </button>
+
 
   <div class="header">
     <div class="header-content-wrapper">
@@ -17,7 +18,7 @@
       <h2>Informações do aluno</h2>
       <div class="header-icons">
         <button class="action-icon-btn">&#x21BB;</button>
-        <button class="action-icon-btn">&#x270E;</button>
+        <button class="action-icon-btn" (click)="openEditAlunoPopup()">&#x270E;</button>
       </div>
     </div>
     <div class="info-row">
@@ -108,4 +109,42 @@
     </div>
     <textarea [(ngModel)]="anotacoes" placeholder="Digite aqui..."></textarea>
   </section>
+</div>
+
+<div class="popup-overlay" *ngIf="showEditAlunoPopup">
+  <div class="popup-content-new-style">
+    <h3 class="popup-title-new-style">Dados Pessoais</h3>
+    <form (ngSubmit)="saveAlunoChanges()">
+
+      <div class="form-row-new-style">
+        <div class="form-group-new-style label-col1">
+          <label for="alunoNomeNew">Nome</label>
+          <input id="alunoNomeNew" type="text" [(ngModel)]="editedAluno.nome" name="nomeAlunoNew">
+        </div>
+        <div class="form-group-new-style label-col2">
+          <label for="alunoNascimentoNew">Data de nascimento</label>
+          <input id="alunoNascimentoNew" type="text" [(ngModel)]="editedAluno.nascimento" name="nascimentoAlunoNew" placeholder="DD/MM/AAAA">
+        </div>
+      </div>
+
+      <div class="form-row-new-style">
+        <div class="form-group-new-style label-col1">
+          <label for="alunoCpfNew">CPF</label>
+          <input id="alunoCpfNew" type="text" [(ngModel)]="editedAluno.cpf" name="cpfAlunoNew">
+        </div>
+        <div class="form-group-new-style label-col2">
+          <label for="alunoRgNew">RG</label>
+          <input id="alunoRgNew" type="text" [(ngModel)]="editedAluno.rg" name="rgAlunoNew">
+        </div>
+      </div>
+
+      <div class="popup-actions-new-style">
+        <label class="checkbox-container">
+          <input type="checkbox" [(ngModel)]="confirmChanges" name="confirmChanges">
+          Confirmar
+        </label>
+        <button type="submit" class="update-btn">Atualizar</button>
+      </div>
+    </form>
+  </div>
 </div>
