@@ -5,6 +5,7 @@ export { EscolasComponent as EscolasListagem };
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Sidebar } from '../../sidebar/sidebar';
+import { SearchCompassComponent,} from '../../search-compass.component/search-compass.component';
 
 export interface Endereco {
   rua: string;
@@ -27,7 +28,7 @@ export interface Escola {
 @Component({
   selector: 'app-escolas',
   standalone: true,
-  imports: [CommonModule, FormsModule, Sidebar],
+  imports: [CommonModule, FormsModule, Sidebar, SearchCompassComponent],
   templateUrl: './listagem-escolas.html',
   styleUrls: ['./listagem-escolas.css']
 })
