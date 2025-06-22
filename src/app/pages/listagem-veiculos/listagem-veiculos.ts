@@ -23,21 +23,66 @@ interface Veiculo {
 })
 export class VeiculosListagem {
   veiculos: Veiculo[] = [
-    { nome: 'Veículo 1', expandido: false },
     {
-      nome: 'Veículo 2',
+      nome: 'Van 1',
+      placa: 'ABC-1234',
+      modelo: 'Mercedes-Benz Sprinter',
+      capacidade: 15,
+      identificacao: 'V1A2B3',
+      anoFabricacao: 2018,
+      dataAquisicao: '20/03/2019',
+      expandido: false
+    },
+    {
+      nome: 'Van 2',
       placa: 'GYR-1845',
-      modelo: 'L74',
+      modelo: 'Fiat Ducato',
       capacidade: 16,
-      identificacao: 'A1B2C3',
+      identificacao: 'V4C5D6',
       anoFabricacao: 2012,
       dataAquisicao: '15/07/2014',
       expandido: false
     },
-    { nome: 'Veículo 3', expandido: false },
-    { nome: 'Veículo 4', expandido: false },
-    { nome: 'Veículo 5', expandido: false },
-    { nome: 'Veículo 6', expandido: false }
+    {
+      nome: 'Van 3',
+      placa: 'QWE-0987',
+      modelo: 'Renault Master',
+      capacidade: 18,
+      identificacao: 'V7E8F9',
+      anoFabricacao: 2021,
+      dataAquisicao: '10/01/2022',
+      expandido: false
+    },
+    {
+      nome: 'Van 4',
+      placa: 'ERT-5678',
+      modelo: 'Ford Transit',
+      capacidade: 12,
+      identificacao: 'V0G1H2',
+      anoFabricacao: 2020,
+      dataAquisicao: '05/11/2020',
+      expandido: false
+    },
+    {
+      nome: 'Van 5',
+      placa: 'ZXC-4321',
+      modelo: 'Hyundai H100',
+      capacidade: 10,
+      identificacao: 'V3I4J5',
+      anoFabricacao: 2022,
+      dataAquisicao: '22/08/2023',
+      expandido: false
+    },
+    {
+      nome: 'Van 6',
+      placa: 'VBN-7890',
+      modelo: 'Peugeot Boxer',
+      capacidade: 17,
+      identificacao: 'V6K7L8',
+      anoFabricacao: 2019,
+      dataAquisicao: '01/04/2019',
+      expandido: false
+    }
   ];
 
   veiculosFiltrados: Veiculo[] = [...this.veiculos];
@@ -59,7 +104,9 @@ export class VeiculosListagem {
     const termo = term.toLowerCase();
 
     this.veiculosFiltrados = this.veiculos.filter(v =>
-      v.nome.toLowerCase().includes(termo)
+      v.nome.toLowerCase().includes(termo) ||
+      v.placa?.toLowerCase().includes(termo) ||
+      v.modelo?.toLowerCase().includes(termo)
     );
     this.paginaAtual = 1;
     this.calcularPaginas();
