@@ -36,32 +36,8 @@ export class SearchCompassComponent {
     {
       id: '1',
       title: 'Arthur Montgomery',
-      description: 'Visualize métricas e estatísticas gerais do sistema',
+      description: 'São Jorge da Glória | Tarde',
       url: '/pages/cadastrar-aluno'
-    },
-    {
-      id: '2',
-      title: 'Perfil do Usuário',
-      description: 'Gerencie suas informações pessoais e configurações',
-      url: '/profile'
-    },
-    {
-      id: '3',
-      title: 'Relatórios',
-      description: 'Acesse relatórios detalhados e análises',
-      url: '/reports'
-    },
-    {
-      id: '4',
-      title: 'Configurações',
-      description: 'Ajuste preferências e configurações do sistema',
-      url: '/settings'
-    },
-    {
-      id: '5',
-      title: 'Usuários',
-      description: 'Gerencie usuários e permissões',
-      url: '/users'
     }
   ];
 
