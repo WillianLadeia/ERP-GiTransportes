@@ -1,23 +1,31 @@
 <div class="erp-container">
   <app-sidebar></app-sidebar>
   <app-search-compass></app-search-compass>
-
   <main class="content">
     <div class="header-content">
       <h1>Livro-Caixa</h1>
     </div>
-      <div class="transaction-type-selector">
-        <button class="btn-action" (click)="registrarRecebimento()">Recebimentos</button>
-        <button class="btn-action" (click)="registrarPagamento()">Pagamentos</button>
-      </div>
-
       <div class="content">
-      <div class="filter-actions-bar">
-        <button class="btn-filters" (click)="toggleFiltros()">
-          <span class="icon-filter">&#x231B;</span> Filtros <span class="icon-dropdown">▾</span>
-        </button>
-      </div>
-      <table>
+        <div class="controls">
+          <div class="search-bar">
+            <input 
+              type="text" 
+              placeholder="Buscar por escola..."
+              [(ngModel)]="searchTerm"
+              (input)="onSearch()"
+            >
+          </div>
+          <div class="filter-button">
+            <button (click)="toggleFiltros()">Filtros</button>
+          </div>
+          <div class="add-button">
+            <button (click)="registrarRecebimento()">Recebimentos</button>
+          </div>
+          <div class="add-button">
+            <button (click)="registrarPagamento()">Pagamentos</button>
+        </div>
+    </div>
+      <table class="tabela">
         <thead>
           <tr>
             <th>Tipo</th>
@@ -38,19 +46,42 @@
             <td>{{ item.observacao }}</td>
             <td>{{ item.id }}</td>
             <td class="actions-cell">
-              <button class="action-btn-edit" (click)="editar(item)">&#x270F;&#xFE0F;</button>
-              <button class="action-btn-revert" (click)="reverter(item)">&#x21BB;&#xFE0F;</button>
+              <button class="action-btn-revert" (click)="reverter(item)">
+
+                 <span class="material-symbols-rounded">
+                  history
+                </span>
+              </button>
+              <button class="action-btn-edit" (click)="editar(item)">
+                <span class="material-symbols-rounded">
+edit
+</span>
+              </button>
             </td>
           </tr>
         </tbody>
       </table>
 
       <div class="pagination">
-        <button (click)="previousPage()">&#9664;</button>
-        <span *ngFor="let p of paginas; let i = index" (click)="setPage(i)" [class.active]="i === paginaAtual">
-          {{ i + 1 }}
-        </span>
-        <button (click)="nextPage()">&#9654;</button>
+        <button (click)="previousPage()">
+          <span class="material-symbols-rounded">
+            <div class="botao-navegacao2">
+              arrow_back_2
+            </div>
+          </span>
+          </button>
+        <div class="number">
+          <span *ngFor="let p of paginas; let i = index" (click)="setPage(i)" [class.active]="i === paginaAtual">
+            {{ i + 1 }}
+          </span>
+        </div>
+        <button (click)="nextPage()">
+          <span class="material-symbols-rounded">
+            <div class="botao-navegacao">
+            arrow_back_2
+            </div>
+          </span>
+        </button>
       </div>
     </div>
   </main>

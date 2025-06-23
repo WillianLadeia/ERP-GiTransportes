@@ -5,20 +5,17 @@
 }
 
 * {
-  font-family: 'Open Sans', sans-serif;
-}
 
-.content{
-  margin-left: 140px;
 }
 
 .erp-container {
   display: flex;
   height: 100vh;
   background-color: #f0f2f5;
+  margin-left: 280px;
 }
 
-.erp-container .content {
+.content {
   flex: 1;
   padding: 20px;
 }
@@ -27,12 +24,10 @@
   display: flex;
   justify-content: space-between; 
   align-items: center; 
-  margin-bottom: 25px; 
-  padding-right: 20px; 
 }
 
-.erp-container .content h1 {
-  color: #2f65b7;
+.content h1 {
+  color: #326db0;
   margin-bottom: 0; 
   font-size: 37px;
   font-weight: bold;
@@ -40,48 +35,49 @@
   margin-right: auto;
 }
 
-.search-button {
-  background: none; 
-  border: none; 
-  color: #2f65b7; 
-  font-size: 1.5rem; 
-  cursor: pointer;
-  transition: color 0.2s ease-in-out;
-}
-
-.search-button:hover {
-  color: #1e4a8d; 
-}
-
-.transaction-type-selector {
+.controls {
+  padding: 1.25rem 0;
   display: flex;
-  justify-content: center; 
-  margin-bottom: 25px;
-  border-radius: 8px;
-  overflow: hidden;
-  width: calc(100% - 60px); 
+  gap: 0.9375rem;
+  align-items: center;
 }
 
-.btn-action {
-  background-color: #1e4a8d;
-  color: white;
+.search-bar input {
+  padding: 0.75rem 2.5rem 0.75rem 0.9375rem;
+  border: 0.125rem solid #326db0;
+  border-radius: 0.9375rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background-color: #fafafa;
+}
+
+.search-bar input:focus {
+  border-color: #224976;
+}
+
+.filter-button button,
+.add-button button {
+  padding: 0.75rem 1.875rem;
   border: none;
-  padding: 17px 10px;
-  padding-inline: 10px;
+  border-radius: 0.9375rem;
+  font-size: 1rem;
   cursor: pointer;
-  border-radius: 10px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 5px;
-  margin-inline: 10px;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  background: #326db0;
+  color: #fafafa;
   font-weight: bold;
-  font-size: 0.97rem ;
-  transition: background-color 0.2s;
+  min-width: calc(145px + 60px);
+  display: flex;
+  justify-content: center;
 }
 
-.btn-action:hover {
-  background-color: #16366b;
+.filter-button button:hover,
+.add-button button:hover {
+  background: #224976;
 }
 
 .filter-actions-bar {
@@ -95,50 +91,17 @@
   margin-right: 20px;
 }
 
-.btn-filters {
-  background-color: #1e4a8d;
-  color: white;
-  border: 1px solid #c0d9ed;
-  padding: 8px 15px;
-  cursor: pointer;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  font-size: 1rem;
-  font-weight: 600;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  transition: background-color 0.2s, border-color 0.2s;
-}
-
-.btn-filters:hover {
-  background-color: #e0eaff;
-  border-color: #2f65b7;
-}
-
-.btn-filters .icon-filter {
-  font-size: 1.1rem;
-}
-
-.btn-filters .icon-dropdown {
-  font-size: 1.1rem;
-  margin-left: 5px;
-}
-
-.erp-container .content table {
-  width: calc(100% - 40px);
-  margin: 0 20px 20px 20px;
+.tabela {
+  width: 100%;
   border-collapse: separate;
   border-spacing: 0px;
-  background-color: #2f65b7;
-  border-radius: 8px;
+  background-color: #326db0;
+  border-radius: 1rem;
   overflow: hidden;
-  border: 8px solid #2f65b7;
 }
 
-.erp-container .content table th,
-.erp-container .content table td {
+.tabela th,
+.tabela td {
   border: 1px solid white;
   text-align: center;
   padding: 12px 8px;
@@ -146,38 +109,46 @@
   color: white;
 }
 
-.erp-container .content table th:first-child,
-.erp-container .content table td:first-child {
+.tabela th:first-child,
+.tabela td:first-child {
   border-left: none;
 }
 
-.erp-container .content table th:last-child,
-.erp-container .content table td:last-child {
+.tabela th:last-child,
+.tabela td:last-child {
   border-right: none;
 }
 
-.erp-container .content table thead th {
+.tabela thead th {
   background-color: #2f65b7;
   font-weight: bold;
   border-bottom: 1px solid white;
   border-top: none;
 }
 
-.erp-container .content table tbody tr {
+.tabela tbody tr {
   background-color: transparent;
   box-shadow: none;
 }
 
-.erp-container .content table tbody tr:last-child td {
+.tabela tbody tr:last-child td {
   border-bottom: none;
 }
 
-.erp-container .content table tbody tr:first-child td {
+.tabela tbody tr:first-child td {
   border-top: 1px solid white;
 }
 
-.erp-container .content table tbody tr td {
+.tabela tbody tr td {
   border-top: 1px solid white;
+}
+
+.material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
 }
 
 
@@ -195,7 +166,7 @@
   color: #c0d9ed;
 }
 
-.erp-container .content .pagination {
+.pagination {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -203,13 +174,12 @@
   margin-top: 20px;
 }
 
-.erp-container .content .pagination span {
+.pagination .number {
   cursor: pointer;
   padding: 8px 12px;
   background-color: #2f65b7;
   color: white;
   border-radius: 50%;
-  border: 1px solid white;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s;
   min-width: 35px;
   height: 35px;
@@ -218,30 +188,38 @@
   justify-content: center;
 }
 
-.erp-container .content .pagination span:hover:not(.active) {
-  background-color: #1e4a8d;
+.pagination .number:hover:not(.active) {
+  background-color: #224976;
   border-color: white;
 }
 
-.erp-container .content .pagination span.active {
+.pagination .number.active {
   background-color: white;
-  color: #2f65b7;
+  color: #224976;
   border-color: white;
   font-weight: bold;
 }
 
-.erp-container .content .pagination button {
-  background-color: transparent;
-  color: #2f65b7;
+.pagination button {
+  color: #326db0;
+  background: none;
   border: none;
-  padding: 5px 8px;
   cursor: pointer;
-  font-size: 1.5rem;
   transition: color 0.2s;
+  height: 32px;
 }
 
-.erp-container .content .pagination button:hover {
+.pagination button:hover {
   color: #1e4a8d;
+}
+
+.botao-navegacao2 {
+  font-size: 2rem;
+}
+
+.botao-navegacao {
+  rotate: 180deg;
+  font-size: 2rem;
 }
 
 @media (max-width: 768px) {
@@ -267,12 +245,12 @@
     margin-bottom: 10px;
   }
 
-  .erp-container .content table {
+  .tabela {
     font-size: 0.8rem;
   }
 
-  .erp-container .content table th,
-  .erp-container .content table td {
+  .tabela th,
+  .tabela td {
     padding: 6px;
   }
 }

@@ -25,6 +25,10 @@ export class LivroCaixa {
   filtro = '';
   paginaAtual = 0;
   itensPorPagina = 5;
+  searchTerm: string = '';
+  currentPage: number = 1;
+  totalPages: number = 3;
+  itemsPerPage: number = 10;
 
   itens: LivroCaixaItem[] = [
     { tipo: 'Recebimento', data: '12/12/2012', valor: 'R$300,00', categoria: 'Mensalidade', observacao: '------------------------------', id: 'RM0051' },
@@ -32,8 +36,42 @@ export class LivroCaixa {
     // Adicione mais itens se quiser testar a paginação
   ];
 
+  filteredLivroCaixaItems: LivroCaixaItem[] = [];
+  displayedLivroCaixaItems: LivroCaixaItem[] = [];
+
   get paginas() {
     return Array(Math.ceil(this.itensFiltrados().length / this.itensPorPagina)).fill(0);
+  }
+
+  onSearch(): void {
+    if (this.searchTerm.trim() === '') {
+      this.filteredLivroCaixaItems = [...this.itens];
+    } else {
+      this.filteredLivroCaixaItems = this.itens.filter(item =>
+        item.tipo.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        item.categoria.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        item.observacao.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        item.id.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+    this.currentPage = 1;
+    this.updateDisplayedRegisters();
+  }
+
+  toggleSchool(index: number): void {
+    const actualIndex = this.itens.findIndex(item => 
+      item.id === this.displayedLivroCaixaItems[index].id
+    );
+    if (actualIndex !== -1) {
+      this.updateDisplayedRegisters();
+    }
+  }
+
+  updateDisplayedRegisters(): void {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.displayedLivroCaixaItems = this.filteredLivroCaixaItems.slice(startIndex, endIndex);
+    this.totalPages = Math.ceil(this.filteredLivroCaixaItems.length / this.itemsPerPage);
   }
 
   itensFiltrados() {
