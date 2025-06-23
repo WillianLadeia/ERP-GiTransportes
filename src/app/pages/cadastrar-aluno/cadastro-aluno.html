@@ -13,8 +13,8 @@
     <div class="section-header-wrapper">
       <h2>Informações do aluno</h2>
       <div class="header-icons">
-        <button class="action-icon-btn">&#x21BB;</button>
-        <button class="action-icon-btn" (click)="openEditAlunoPopup()">&#x270E;</button>
+        <button class="action-icon-btn"><span class="material-symbols-rounded">history</span></button>
+        <button class="action-icon-btn" (click)="openEditAlunoPopup()"><span class="material-symbols-rounded">edit</span></button>
       </div>
     </div>
     <div class="info-row">
@@ -30,8 +30,8 @@
     <div class="section-header-wrapper">
       <h2>Informações do responsável</h2>
       <div class="header-icons">
-        <button class="action-icon-btn">&#x21BB;</button>
-        <button class="action-icon-btn">&#x270E;</button>
+        <button class="action-icon-btn"><span class="material-symbols-rounded">history</span></button>
+        <button class="action-icon-btn"><span class="material-symbols-rounded">edit</span></button>
       </div>
     </div>
     <div class="info-row">
@@ -48,8 +48,8 @@
     <div class="section-header-wrapper">
       <h2>Endereço</h2>
       <div class="header-icons">
-        <button class="action-icon-btn">&#x21BB;</button>
-        <button class="action-icon-btn">&#x270E;</button>
+        <button class="action-icon-btn"><span class="material-symbols-rounded">history</span></button>
+        <button class="action-icon-btn"><span class="material-symbols-rounded">edit</span></button>
       </div>
     </div>
     <div class="info-row">
@@ -70,14 +70,13 @@
     <div class="section-header-wrapper">
       <h2>Escola</h2>
       <div class="header-icons">
-        <button class="action-icon-btn">&#x21BB;</button>
-        <button class="action-icon-btn">&#x270E;</button>
+        <button class="action-icon-btn"><span class="material-symbols-rounded">history</span></button>
+        <button class="action-icon-btn"><span class="material-symbols-rounded">edit</span></button>
       </div>
     </div>
     <div class="info-row">
       <div><strong>Escola:</strong> {{ escola.nome }}</div>
       <div><strong>Período:</strong> {{ escola.periodo }}</div>
-      <div><strong>Linha de van:</strong> {{ escola.linhaVan }}</div>
     </div>
   </section>
 
@@ -85,8 +84,8 @@
     <div class="section-header-wrapper">
       <h2>Financeiro</h2>
       <div class="header-icons">
-        <button class="action-icon-btn">&#x21BB;</button>
-        <button class="action-icon-btn">&#x270E;</button>
+        <button class="action-icon-btn"><span class="material-symbols-rounded">history</span></button>
+        <button class="action-icon-btn"><span class="material-symbols-rounded">edit</span></button>
       </div>
     </div>
     <div class="info-row">
@@ -99,8 +98,8 @@
     <div class="section-header-wrapper">
       <h2>Anotações</h2>
       <div class="header-icons">
-        <button class="action-icon-btn">&#x21BB;</button>
-        <button class="action-icon-btn">&#x270E;</button>
+        <button class="action-icon-btn"><span class="material-symbols-rounded">history</span></button>
+        <button class="action-icon-btn"><span class="material-symbols-rounded">edit</span></button>
       </div>
     </div>
     <textarea [(ngModel)]="anotacoes" placeholder="Digite aqui..."></textarea>
