@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core'; // Adicione ElementRef aqui
+import { Component, ViewChild, ElementRef } from '@angular/core'; 
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { CommonModule } from '@angular/common';
@@ -22,8 +22,8 @@ export class Login {
   constructor(private auth: AuthService, private router: Router) {}
 
   login() {
-    if (this.user === 'root' && this.password === 'toor') {
-      sessionStorage.setItem('usuarioId', '1'); // simula login
+    if (this.user === 'valeria' && this.password === 'toor') {
+      sessionStorage.setItem('usuarioId', '1'); 
       this.router.navigate(['/home']);
     } else {
       this.error = 'Usuário ou senha inválidos';

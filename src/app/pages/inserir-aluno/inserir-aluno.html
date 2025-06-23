@@ -1,5 +1,5 @@
 <app-sidebar></app-sidebar>
-  <app-search-compass></app-search-compass>
+<app-search-compass></app-search-compass>
 <div class="container">
     <h1>Cadastrar Aluno</h1>
 
@@ -135,6 +135,9 @@
         <label class="checkbox-container">
             <input type="checkbox"> Confirmar
         </label>
-        <button class="btn-confirmar">Cadastrar</button>
+        <button class="btn-confirmar" (click)="cadastrarAluno()">Cadastrar</button>
+    </div>
+    <div *ngIf="showPopup" class="popup-sucesso">
+        Aluno cadastrado com sucesso!
     </div>
 </div>
