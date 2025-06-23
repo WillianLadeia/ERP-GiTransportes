@@ -14,14 +14,14 @@
 
 .page-header {
   background: #fafafa;
-  padding: 1.25rem 1.875rem; /* 20px 30px */
+  padding: 1.25rem 1.875rem; 
   display: flex;
   justify-content: center;
   align-self: center;
 }
 
 .page-title {
-  font-size: 2.5rem; /* 36px */
+  font-size: 2.5rem; 
   color: #326db0;
   margin: 0;
   font-weight: bold;
