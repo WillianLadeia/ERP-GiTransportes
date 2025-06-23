@@ -113,7 +113,7 @@ h2::after {
 
 .input-grande {
   width: 100%;
-  max-width: 400px;
+  max-width: 300px;
 }
 
 .input-medio {
@@ -123,12 +123,12 @@ h2::after {
 
 .input-pequeno {
   width: 100%;
-  max-width: 200px;
+  max-width: 300px;
 }
 
 .input-pequeno-mesmo {
   width: 100%;
-  max-width: 250px; /* Tamanho reduzido para Nome, CPF, Financeiro, Responsável */
+  max-width: 300px; 
 }
 
 .popup-sucesso {
@@ -151,4 +151,6 @@ h2::after {
 }
 
 
-
+.form-group.campo-fixo {
+  width: 380px;
+}
