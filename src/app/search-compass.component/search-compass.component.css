@@ -1,6 +1,6 @@
 /* search-compass.component.css */
 .search-compass {
-  position: fixed;
+  position: absolute;
   top: 20px;
   right: 20px;
   z-index: 1000;
