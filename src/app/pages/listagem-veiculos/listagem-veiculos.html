@@ -54,11 +54,25 @@
     </div>
   </div>
 
-  <div class="pagination-controls">
-    <button class="pagination-arrow" (click)="previousPage()" [disabled]="paginaAtual === 1">&#9664;</button>
-    <span class="pagination-number" *ngFor="let p of paginas; let i = index" (click)="setPage(i)" [class.active]="i === paginaAtual">
-      {{ i + 1 }}
-    </span>
-    <button class="pagination-arrow" (click)="nextPage()">&#9654;</button>
-  </div>
+  <div class="pagination">
+      <button (click)="previousPage()">
+        <span class="material-symbols-rounded">
+          <div class="botao-navegacao2">
+            arrow_back_2
+          </div>
+        </span>
+        </button>
+      <div class="number">
+        <span>
+          1
+        </span>
+      </div>
+      <button (click)="nextPage()">
+        <span class="material-symbols-rounded">
+          <div class="botao-navegacao">
+          arrow_back_2
+          </div>
+        </span>
+      </button>
+    </div>
 </div>

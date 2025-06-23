@@ -101,22 +101,24 @@
     </div>
 
     <div class="pagination">
-      <button class="prev-btn" (click)="previousPage()" [disabled]="currentPage === 1">
-        <i class="arrow-left"></i>
-      </button>
-      <span class="page-numbers">
-        @for (page of getPageNumbers(); track page) {
-          <span
-            class="page-number"
-            [class.active]="page === currentPage"
-            (click)="goToPage(page)"
-          >
-            {{ page }}
-          </span>
-        }
-      </span>
-      <button class="next-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">
-        <i class="arrow-right"></i>
+      <button (click)="previousPage()">
+        <span class="material-symbols-rounded">
+          <div class="botao-navegacao2">
+            arrow_back_2
+          </div>
+        </span>
+        </button>
+      <div class="number">
+        <span>
+          1
+        </span>
+      </div>
+      <button (click)="nextPage()">
+        <span class="material-symbols-rounded">
+          <div class="botao-navegacao">
+          arrow_back_2
+          </div>
+        </span>
       </button>
     </div>
   </div>
