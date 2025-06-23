@@ -8,14 +8,14 @@
 
   <div class="top-actions-bar">
     <div class="registration-buttons-row">
-      <button class="action-btn">Registrar Manutenção</button>
-      <button class="action-btn">Registrar Abastecimento</button>
+      <button class="manutencao-btn">Registrar Manutenção</button>
+      <button class="abastecimento-btn">Registrar Abastecimento</button>
     </div>
     
     <div class="search-filter-cadastrar-row">
       <input type="text" placeholder="Buscar por nome..." class="search-input" (input)="buscar($event)" />
       <button class="filter-btn">
-        <span class="icon-filter-btn">&#x231B;</span> Filtros <span class="icon-dropdown-btn">▾</span>
+        <span class="material-symbols-rounded filter-icon">filter_alt</span> Filtros
       </button>
       <button class="action-btn">Cadastrar Veículo</button>
     </div>
@@ -23,16 +23,18 @@
 
   <div class="veiculo-list">
     <div class="veiculo-item-box" *ngFor="let veiculo of itensPaginados()">
-      <div class="veiculo-item-header" (click)="toggleExpandir(veiculo)">
+      <div class="veiculo-item-header" [class.expanded]="veiculo.expandido" (click)="toggleExpandir(veiculo)">
         <span>{{ veiculo.nome }}</span>
-        <span class="expand-icon">{{ veiculo.expandido ? '&#9650;' : '&#9660;' }}</span>
+        <ng-container *ngIf="veiculo.expandido; else fechado">
+          <span class="material-symbols-rounded arrow-opened">arrow_back_2</span>
+        </ng-container>
+        <ng-template #fechado>
+          <span class="material-symbols-rounded arrow-closed">arrow_back_2</span>
+        </ng-template>
+        
       </div>
 
       <div class="veiculo-item-details" *ngIf="veiculo.expandido">
-        <div class="details-actions">
-          <button class="action-icon-btn">&#x2692;</button>
-          <button class="action-icon-btn">&#x270E;</button>
-        </div>
         <div class="details-col">
           <p><strong>Placa:</strong> {{ veiculo.placa }}</p>
           <p><strong>Modelo:</strong> {{ veiculo.modelo }}</p>
@@ -43,7 +45,12 @@
           <p><strong>Ano de fabricação:</strong> {{ veiculo.anoFabricacao }}</p>
           <p><strong>Data de aquisição:</strong> {{ veiculo.dataAquisicao }}</p>
         </div>
+        <div class="details-actions">
+          <button class="action-icon-btn"><span class="material-symbols-rounded">history</span></button>
+          <button class="action-icon-btn"><span class="material-symbols-rounded">edit</span></button>
+        </div>
       </div>
+      <hr class="underline">
     </div>
   </div>
 
