@@ -17,6 +17,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/cadastrar-aluno/cadastro-aluno').then(m => m.CadastroAluno)
   },
   {
+    path: 'inserir-aluno',
+    loadComponent: () => import('./pages/inserir-aluno/inserir-aluno').then(m => m.InserirAluno)
+  },
+  {
     path: 'listagem-escolas',
     loadComponent: () => import('./pages/listagem-escolas/listagem-escolas').then(m => m.EscolasListagem),
   },

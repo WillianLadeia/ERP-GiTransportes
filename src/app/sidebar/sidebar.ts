@@ -26,7 +26,7 @@ export class Sidebar {
   }
 
   goToCadastroAluno() {
-    this.router.navigate(['/cadastro-aluno']);
+    this.router.navigate(['/inserir-aluno']);
   }
 
   goToListagemEscolas() {
