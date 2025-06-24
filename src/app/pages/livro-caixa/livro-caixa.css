@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-* {
-
-}
-
 .erp-container {
   display: flex;
   height: 100vh;
@@ -206,7 +202,6 @@
   border: none;
   cursor: pointer;
   transition: color 0.2s;
-  height: 32px;
 }
 
 .pagination button:hover {

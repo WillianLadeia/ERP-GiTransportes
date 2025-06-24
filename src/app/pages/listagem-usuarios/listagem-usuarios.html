@@ -89,28 +89,24 @@
 
     <!-- Paginação -->
     <div class="pagination">
-      <button 
-        class="pagination-btn" 
-        (click)="previousPage()" 
-        [disabled]="currentPage === 1">
-        ‹
-      </button>
-      
-      <span class="page-numbers">
-        <button 
-          *ngFor="let page of getPages()" 
-          class="page-btn"
-          [class.active]="page === currentPage"
-          (click)="goToPage(page)">
-          {{ page }}
+      <button (click)="previousPage()">
+        <span class="material-symbols-rounded">
+          <div class="botao-navegacao2">
+            arrow_back_2
+          </div>
+        </span>
         </button>
-      </span>
-      
-      <button 
-        class="pagination-btn" 
-        (click)="nextPage()" 
-        [disabled]="currentPage === totalPages">
-        ›
+      <div class="number">
+        <span>
+          1
+        </span>
+      </div>
+      <button (click)="nextPage()">
+        <span class="material-symbols-rounded">
+          <div class="botao-navegacao">
+          arrow_back_2
+          </div>
+        </span>
       </button>
     </div>
   </div>

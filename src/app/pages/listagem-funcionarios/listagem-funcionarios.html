@@ -34,87 +34,91 @@
               <span class="funcionario-title">{{ funcionario.nome }} - {{ funcionario.cargo }}</span>
               <span class="arrow-icon" [class.expanded]="funcionario.expanded">▼</span>
             </div>
-            <div class="separator-style"></div>
           </div>
 
           @if (funcionario.expanded) {
-            <div class="details-style">
-              <section class="personal-details">
-                <div class="section-header-style">
-                  <h3>Dados Pessoais</h3>
-                  <span class="status-badge" [class.active-status]="funcionario.status === 'Ativo'">{{ funcionario.status }}</span>
-                </div>
-                <div class="info-grid">
-                  <div><strong>Nome:</strong> {{ funcionario.nome }}</div>
-                  <div><strong>Cargo:</strong> {{ funcionario.cargo }}</div>
-                  <div><strong>Data de Nascimento:</strong> {{ funcionario.dataNascimento }}</div>
-                  <div><strong>RG:</strong> {{ funcionario.rg }}</div>
-                  <div><strong>CPF:</strong> {{ funcionario.cpf }}</div>
-                  <div><strong>Sexo:</strong> {{ funcionario.sexo }}</div>
-                  <div><strong>Estado Civil:</strong> {{ funcionario.estadoCivil }}</div>
-                </div>
-              </section>
+            <div class="big-grid">
+              <div class="details-style">
+                <section class="personal-details">
+                  <div class="section-header-style">
+                    <h3>Dados Pessoais</h3>
+                    <span class="status-badge" [class.active-status]="funcionario.status === 'Ativo'">{{ funcionario.status }}</span>
+                  </div>
+                  <div class="info-grid">
+                    <div><strong>Nome:</strong> {{ funcionario.nome }}</div>
+                    <div><strong>Cargo:</strong> {{ funcionario.cargo }}</div>
+                    <div><strong>Data de Nascimento:</strong> {{ funcionario.dataNascimento }}</div>
+                    <div><strong>RG:</strong> {{ funcionario.rg }}</div>
+                    <div><strong>CPF:</strong> {{ funcionario.cpf }}</div>
+                    <div><strong>Sexo:</strong> {{ funcionario.sexo }}</div>
+                    <div><strong>Estado Civil:</strong> {{ funcionario.estadoCivil }}</div>
+                  </div>
+                </section>
 
-              <section class="contact-details">
-                <div class="section-header-style">
-                  <h3>Contato</h3>
-                </div>
-                <div class="info-grid">
-                  <div><strong>Celular 1:</strong> {{ funcionario.celular1 }}</div>
-                  <div><strong>Email:</strong> {{ funcionario.email }}</div>
-                  <div><strong>Celular 2:</strong> {{ funcionario.celular2 || 'Não informado' }}</div>
-                </div>
-              </section>
+                <section class="contact-details">
+                  <div class="section-header-style">
+                    <h3>Contato</h3>
+                  </div>
+                  <div class="info-grid">
+                    <div><strong>Celular 1:</strong> {{ funcionario.celular1 }}</div>
+                    <div><strong>Email:</strong> {{ funcionario.email }}</div>
+                    <div><strong>Celular 2:</strong> {{ funcionario.celular2 || 'Não informado' }}</div>
+                  </div>
+                </section>
 
-              <section class="financial-details">
-                <div class="section-header-style">
-                  <h3>Dados Financeiros</h3>
-                </div>
-                <div class="info-grid">
-                  <div><strong>Salário:</strong> R$ 3.500,00</div>
-                  <div><strong>Benefícios:</strong> VT, VR</div>
-                </div>
-              </section>
+                <section class="financial-details">
+                  <div class="section-header-style">
+                    <h3>Dados Financeiros</h3>
+                  </div>
+                  <div class="info-grid">
+                    <div><strong>Salário:</strong> R$ 3.500,00</div>
+                    <div><strong>Benefícios:</strong> VT, VR</div>
+                  </div>
+                </section>
 
-              <section class="document-details">
-                <div class="section-header-style">
-                  <h3>Documentos</h3>
-                </div>
-                <div class="info-grid">
-                  <div><strong>CNH:</strong> AB (Válida)</div>
-                  <div><strong>Comprovante de Residência:</strong> Sim</div>
-                </div>
-              </section>
+                <section class="document-details">
+                  <div class="section-header-style">
+                    <h3>Documentos</h3>
+                  </div>
+                  <div class="info-grid">
+                    <div><strong>CNH:</strong> AB (Válida)</div>
+                    <div><strong>Comprovante de Residência:</strong> Sim</div>
+                  </div>
+                </section>
 
-              <div class="edit-button-container">
-                <button class="edit-button-style" >
-                  <span class="edit-icon-style"></span>
-                  Editar
-                </button>
+                <div class="edit-button-container">
+                  <button class="edit-button-style" >
+                    <span class="edit-icon-style"></span>
+                    Editar
+                  </button>
+                </div>
               </div>
             </div>
           }
         </div>
+        <hr class="underline">
       }
     </div>
 
     <div class="pagination">
-      <button class="prev-btn" (click)="previousPage()" [disabled]="currentPage === 1">
-        <i class="arrow-left"></i>
-      </button>
-      <span class="page-numbers">
-        @for (page of getPageNumbers(); track page) {
-          <span
-            class="page-number"
-            [class.active]="page === currentPage"
-            (click)="goToPage(page)"
-          >
-            {{ page }}
-          </span>
-        }
-      </span>
-      <button class="next-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">
-        <i class="arrow-right"></i>
+      <button (click)="previousPage()">
+        <span class="material-symbols-rounded">
+          <div class="botao-navegacao2">
+            arrow_back_2
+          </div>
+        </span>
+        </button>
+      <div class="number">
+        <span>
+          1
+        </span>
+      </div>
+      <button (click)="nextPage()">
+        <span class="material-symbols-rounded">
+          <div class="botao-navegacao">
+          arrow_back_2
+          </div>
+        </span>
       </button>
     </div>
   </div>
